@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="cust_diskon.list">
+      <field name="name">cust_diskon list</field>
+      <field name="model">cust_diskon.cust_diskon</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="cust_diskon.action_window">
+      <field name="name">cust_diskon window</field>
+      <field name="res_model">cust_diskon.cust_diskon</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="cust_diskon.action_server">
+      <field name="name">cust_diskon server</field>
+      <field name="model_id" ref="model_cust_diskon_cust_diskon"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="cust_diskon" id="cust_diskon.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="cust_diskon.menu_1" parent="cust_diskon.menu_root"/>
+    <menuitem name="Menu 2" id="cust_diskon.menu_2" parent="cust_diskon.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="cust_diskon.menu_1_list" parent="cust_diskon.menu_1"
+              action="cust_diskon.action_window"/>
+    <menuitem name="Server to list" id="cust_diskon" parent="cust_diskon.menu_2"
+              action="cust_diskon.action_server"/>
+-->
+  </data>
+</odoo>

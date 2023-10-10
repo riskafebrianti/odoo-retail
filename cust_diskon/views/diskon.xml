@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- diskon respartner -->
+<!-- model.name inherit form view -->
+    <record id="inherit_view_order_form" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <field name="vat" position="after">
+                <field name="diskon"></field> 
+            </field>
+          
+            <!-- <xpath expr="//page[@name='other_information']//group//group[@name='sales_person']//field[@name='user_id']" position="after">
+                <field name="contoh"/>
+            </xpath> -->
+
+        </field>
+    </record>
+<!-- 
+    <record id="inherit_view_order" model="ir.ui.view">
+        <field name="name">inherit.view.form</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+           
+            <field name="partner_id" position="after">
+                <field name="diskonn"></field> 
+            </field>
+          
+        </field>
+    </record> -->
+
+<record id="inherit_view_sales_form" model="ir.ui.view">
+    <field name="name">sale.order.inherit.view.form</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+            <field name="diskonn"></field>
+        </field>
+        <!-- <field name="product_template_id" position="before">
+            <field name="barcode"></field>
+        </field> -->
+       
+    </field>
+</record>
+
+<record id="inherit_view_sales_form" model="ir.ui.view">
+    <field name="name">sale.order</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <field name="product_template_id" position="before">
+            <field name="barcode"></field>
+        </field>
+       
+    </field>
+</record>
+</odoo>
+<!-- <record id="inherit_view_order_form" model="ir.ui.view">
+    <field name="name">loyalty.program.inherit.view.form</field>
+    <field name="model">loyalty.program</field>
+    <field name="inherit_id" ref="loyalty.loyalty_program_view_form"/>
+    <field name="arch" type="xml">
+        
+        <field name="date_to" position="after">
+            <field name="diskonn"></field> 
+        </field>
+       -->
+        <!-- <xpath expr="//page[@name='other_information']//group//group[@name='sales_person']//field[@name='user_id']" position="after">
+            <field name="contoh"/>
+        </xpath>
+
+    </field>
+</record> -->
+
+<!-- <templates id="template" xml:space="preserve">
+    <t t-name="CategoryControlButton" owl="1">
+        <div class="control-button">
+            <i class="fa fa-list" role="img" aria-label="Categories"
+               title="Categories"/>
+            View Categories
+        </div>
+    </t>
+ </templates> -->
