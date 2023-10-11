@@ -40,14 +40,14 @@
         <field name="partner_id" position="after">
             <field name="diskonn"></field>
         </field>
-        <!-- <field name="product_template_id" position="before">
+        <field name="product_template_id" position="before">
             <field name="barcode"></field>
-        </field> -->
+        </field>
        
     </field>
 </record>
 
-<record id="inherit_view_sales_form" model="ir.ui.view">
+<!-- <record id="inherit_view_sales_form" model="ir.ui.view">
     <field name="name">sale.order</field>
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
@@ -57,7 +57,7 @@
         </field>
        
     </field>
-</record>
+</record> -->
 </odoo>
 <!-- <record id="inherit_view_order_form" model="ir.ui.view">
     <field name="name">loyalty.program.inherit.view.form</field>

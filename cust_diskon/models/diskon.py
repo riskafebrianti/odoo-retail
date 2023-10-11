@@ -1,5 +1,3 @@
-
-
 from odoo import models, fields, api
 
 
@@ -8,6 +6,7 @@ class cust_diskon(models.Model):
     # _description = 'cust_diskon.cust_diskon'
     diskon = fields.Integer('Diskon')
 
+#--
 
 class cust_diskon(models.Model):
     _inherit = 'sale.order.line'
@@ -20,6 +19,18 @@ class cust_diskon(models.Model):
         if self.product_template_id:
          self.barcode  = self.product_template_id.barcode
 
+    # @api.depends('product_id')
+    # def _compute_product_template_id(self):
+    #         for line in self:
+    #             if line.product_id:
+    #                 line.inherited_name = line.product_id.name
+    #             else:
+    #                 line.inherited_name = ""
+                
+                # line.product_template_id = line.product_id.barcode
+
+    # def _search_product_template_id(self, operator, value):
+    #     return [('product_id.barcode', operator, value)]
 
 class cust_diskonn(models.Model):
     _inherit = 'sale.order'
@@ -52,7 +63,8 @@ class cust_diskonn(models.Model):
          self.diskon  = self.partner_id.diskon
         # self.discount  = self.partner_id.discount
         # self.description = "Default description for %s" % (self.partner_id.diskon)
-
+        
+  
    
     # value = fields.Integer()
     # value2 = fields.Float(compute="_value_pc", store=True)
