@@ -19,30 +19,18 @@ class cust_diskon(models.Model):
         if self.product_template_id:
          self.barcode  = self.product_template_id.barcode
 
-    # @api.depends('product_id')
-    # def _compute_product_template_id(self):
-    #         for line in self:
-    #             if line.product_id:
-    #                 line.inherited_name = line.product_id.name
-    #             else:
-    #                 line.inherited_name = ""
-                
-                # line.product_template_id = line.product_id.barcode
-
-    # def _search_product_template_id(self, operator, value):
-    #     return [('product_id.barcode', operator, value)]
-
-class cust_diskonn(models.Model):
-    _inherit = 'sale.order'
-    # _description = 'cust_diskon.cust_diskon'
-    diskonn = fields.Float('Diskon customer') 
-
     @api.model_create_multi
     def create(self, vals_list):
             res = super().create(vals_list)
             if res.order_id.partner_id.diskon != 0:
                 res.discount = res.order_id.partner_id.diskon
             return res
+    
+class cust_diskonn(models.Model):
+    _inherit = 'sale.order'
+    # _description = 'cust_diskon.cust_diskon'
+    diskonn = fields.Float('Diskon customer') 
+
 
 # class cust_diskonsale(models.Model):
 #     _inherit = 'pos.order'
@@ -60,7 +48,7 @@ class cust_diskonn(models.Model):
     @api.onchange("partner_id")
     def _onchange_partner_id(self):
         if self.partner_id:
-         self.diskon  = self.partner_id.diskon
+         self.diskonn  = self.partner_id.diskon
         # self.discount  = self.partner_id.discount
         # self.description = "Default description for %s" % (self.partner_id.diskon)
         
