@@ -28,7 +28,11 @@
         'views/views.xml',
         'views/templates.xml',
         'views/diskon.xml',
+        
+        
+        
     ],
+   
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
