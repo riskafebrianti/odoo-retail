@@ -18,46 +18,73 @@
 
         </field>
     </record>
-<!-- 
+
     <record id="inherit_view_order" model="ir.ui.view">
         <field name="name">inherit.view.form</field>
-        <field name="model">pos.order</field>
-        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
            
-            <field name="partner_id" position="after">
-                <field name="diskonn"></field> 
+            <field name="display_name" position="after">
+                <field name="diskon"></field> 
             </field>
           
         </field>
-    </record> -->
+    </record>
+
+
 
 <record id="inherit_view_sales_form" model="ir.ui.view">
+    <field name="name">pos.order.inherit.view.form</field>
+    <field name="model">pos.order</field>
+    <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+    <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+            <field name="diskon"></field>
+        </field>       
+    </field>
+</record>
+
+<record id="inherit_view_sales_form" model="ir.ui.view">
+    <field name="name">sale.order</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <field name="product_template_id" position="after">
+            <field name="barcode"></field>
+        </field>
+    </field>
+</record>
+
+<!-- sale.order inherit form view -->
+<record id="view_order_form_inherit_new" model="ir.ui.view">
     <field name="name">sale.order.inherit.view.form</field>
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
         <field name="partner_id" position="after">
-            <field name="diskonn"></field>
+            <field name="diskon"></field>
         </field>
-        <field name="product_template_id" position="before">
-            <field name="barcode"></field>
-        </field>
-       
+        
     </field>
 </record>
 
-<!-- <record id="inherit_view_sales_form" model="ir.ui.view">
-    <field name="name">sale.order</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
+<!-- res.partner tree view -->
+<!-- <record id="res.partner_view_tree" model="ir.ui.view">
+    <field name="name">res.partner.view.tree</field>
+    <field name="model">res.partner</field>
     <field name="arch" type="xml">
-        <field name="product_template_id" position="before">
-            <field name="barcode"></field>
-        </field>
-       
+        <tree>
+            Add your fields here -->
+            <!-- <field name="display_name" position="after">
+                <field name="diskon"></field>
+            </field> 
+        </tree>
     </field>
-</record> -->
+</record>--> 
+
+
+
 </odoo>
 <!-- <record id="inherit_view_order_form" model="ir.ui.view">
     <field name="name">loyalty.program.inherit.view.form</field>
@@ -75,13 +102,3 @@
 
     </field>
 </record> -->
-
-<!-- <templates id="template" xml:space="preserve">
-    <t t-name="CategoryControlButton" owl="1">
-        <div class="control-button">
-            <i class="fa fa-list" role="img" aria-label="Categories"
-               title="Categories"/>
-            View Categories
-        </div>
-    </t>
- </templates> -->
