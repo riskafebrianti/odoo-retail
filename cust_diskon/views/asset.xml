@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--  -->
+    <data>
+        <template id="assets_backend" name="cust_diskon" inherit_id="sale.view_order_form">
+            <xpath expr="//group/field[@name='validity_date']" position="after">
+                <script type="text/javascript" src="/static/src/js/quagga.min.js"></script>
+                <script type="text/javascript" src="/static/src/js/barcode_camera.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>
