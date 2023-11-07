@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!-- <data>
+        <template id="tutorial_javascript_assets_backend" inherit_id="web.assets_backend" name="assets backend">
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/odoo-retail/static/src/js/tes.js"/>
+            </xpath>
+        </template>
+    </data> -->
 <!-- diskon respartner -->
 <!-- model.name inherit form view -->
     <record id="inherit_view_order_form" model="ir.ui.view">
@@ -12,8 +19,6 @@
                 <field name="diskon"></field> 
             </field>
           
-         
-
         </field>
     </record>
 
@@ -55,9 +60,9 @@
             
             <button string="set partner data" name="set_partner_ref" type="object" class="oe_highlight"/> 
         </field> -->
-        <xpath expr="//field[@name='order_line']//tree//field[@name='product_template_id']" position="before">
+        <!-- <xpath expr="//field[@name='order_line']//tree//field[@name='product_template_id']" position="before">
             <button string="set partner daata" name="set_partner_ref" type="object" class="oe_highlight"/>
-        </xpath>
+        </xpath> -->
     </field>
 </record>
 
