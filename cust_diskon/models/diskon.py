@@ -17,7 +17,7 @@ class cust_diskon(models.Model):
     # _description = 'cust_diskon.cust_diskon'
     # barcode = fields.Char('barcode',related='product_template_id.barcode')
     barcode = fields.Char('barcode')
-    # aksi = fields.Char('aksi')
+    kode_hrg = fields.Char('Kode Harga', related='product_template_id.kode_hrg')
 
 
     @api.onchange ("product_template_id")
@@ -26,8 +26,7 @@ class cust_diskon(models.Model):
          self.barcode  = self.product_template_id.barcode
          self.discount = self.order_id.partner_id.diskon
     
-    def set_partner_ref(self):
-        print(self)
+   
     # @api.model_create_multi
     # def create(self, vals_list):
     #         res = super().create(vals_list)
@@ -52,26 +51,19 @@ class cust_diskon(models.Model):
         
         
   
-    # ini buat nambahin field di saleorder
-class barcode(models.Model):
-     _inherit = 'stock.move'
-        # _description = 'cust_diskon.cust_diskon'
-     barcode = fields.Char('barcode', related='product_id.barcode') 
-     
-    #  @api.onchange("product_id")
-    #  def _onchange_product_id(self):
-    #      if self.product_id:
-    #       self.barcode  = self.product_id.barcode
-
-
-class cust_diskon(models.Model):
-    _inherit = 'pos.order'
-    # _description = 'cust_diskon.cust_diskon'
-    # diskon = fields.Float('Diskon customer') 
-    
-    diskon = fields.Integer('diskon', related='partner_id.diskon')
-
   
+
+
+# class cust_diskon(models.Model):
+#     _inherit = 'pos.order'
+#     # _description = 'cust_diskon.cust_diskon'
+#     # diskon = fields.Float('Diskon customer') 
+    
+#     diskon = fields.Integer('diskon', related='partner_id.diskon')
+
+
+
+        
 # class cust_diskonsale(models.Model):
 #     _inherit = 'pos.order'
 #      _description = 'cust_diskon.cust_diskon'
@@ -88,10 +80,24 @@ class cust_diskon(models.Model):
     @api.onchange("partner_id")
     def _onchange_partner_id(self):
         if self.partner_id:
-         self.diskonn  = self.partner_id.diskon
+         self.diskon  = self.partner_id.diskon
         # self.discount  = self.partner_id.discount
         # self.description = "Default description for %s" % (self.partner_id.diskon)
         
+    # class CustomSequence(models.Model):
+    #  _inherit = 'ir.sequence'
+
+    # def _next(self):
+    #     # Custom logic to generate the next sequence number
+    #     # For example, you can add a prefix, suffix, or any other customization.
+    #     # Make sure to call super to maintain the Odoo's sequence behavior.
+    #     next_number = super(CustomSequence, self)._next()
+    #     # Customize the 'next_number' as needed
+    #     return next_number
+
+
+
+
 
    
     # value = fields.Integer()
