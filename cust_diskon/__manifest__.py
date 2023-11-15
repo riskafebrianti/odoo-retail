@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','contacts','sale','sale_management','point_of_sale'],
+    'depends': ['base','contacts','sale','sale_management','point_of_sale','product'],
 
     # always loaded
     'data': [
@@ -28,10 +28,18 @@
         'views/views.xml',
         'views/templates.xml',
         'views/diskon.xml',
-        
-        
-        
+        # 'views/asset.xml',
+        'views/barcode.xml',
     ],
+
+#     'assets': {
+# #     'point_of_sale.assets': [
+# #     'cust_diskon/static/src/js/CategoryControlButton.js',
+# #    ],
+#     'web.assets_qweb': [
+#        'cust_diskon/static/src/xml/CategoryControlButton.xml',
+#    ],
+   
    
     # only loaded in demonstration mode
     'demo': [

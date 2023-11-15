@@ -2,3 +2,4 @@
 
 from . import models
 from . import diskon
+from . import barcode
