@@ -38,7 +38,7 @@
     <field name="arch" type="xml">
         <field name="partner_id" position="after">
             <field name="diskon"></field>
-            
+            <field name="barcode"/>
         </field>
     </field>
 </record>

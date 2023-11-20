@@ -12,19 +12,47 @@ class cust_diskon2(models.Model):
 
 #--ini buat di order line nambahin dsc
 
-class cust_diskon(models.Model):
+class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     # _description = 'cust_diskon.cust_diskon'
     # barcode = fields.Char('barcode',related='product_template_id.barcode')
-    barcode = fields.Char('barcode')
+    barcode = fields.Char('barcode', related='product_template_id.barcode')
     kode_hrg = fields.Char('Kode Harga', related='product_template_id.kode_hrg')
 
 
     @api.onchange ("product_template_id")
     def _onchange_product_template_id(self):
         if self.product_template_id:
-         self.barcode  = self.product_template_id.barcode
-         self.discount = self.order_id.partner_id.diskon
+        #  self.barcode  = self.product_template_id.barcode
+            self.discount = self.order_id.partner_id.diskon
+    
+    @api.model
+    def create(self, values):
+        # Check if the product already exists in the order
+        existing_line = self.search([
+            ('order_id', '=', values.get('order_id')),
+            ('product_id', '=', values.get('product_id')),
+        ])
+
+        if existing_line:
+            # If the product exists, add a new line with the same product
+            values['product_uom_qty'] = 1
+            new_line = super(SaleOrderLine, existing_line).create(values)
+            return new_line
+        else:
+            return super(SaleOrderLine, self).create(values)
+    
+    # @api.onchange('product_id')
+    # def product_id_change_custom(self):
+    #     if self.product_id:
+    #         # If the product is not in the order, add a new line
+    #         new_line = self.order_id.order_line.new({
+    #             'product_id': self.product_id.id,
+    #             'order_id': self.order_id.id,
+    #             # Set other default values here
+    #         })
+    #         self.order_id.order_line += new_line
+    #         self.create(new_line)
     
    
     # @api.model_create_multi
@@ -34,81 +62,32 @@ class cust_diskon(models.Model):
     #             res.discount = res.order_id.partner_id.diskon
     #         return res
 
-class cust_diskon(models.Model):
+class SaleOrder(models.Model):
     _inherit = 'sale.order'
     # _description = 'cust_diskon.cust_diskon'
     diskon = fields.Integer('Diskon customer') 
+    barcode = fields.Char(string='Barcode',onfocus='onFocusFunction()', onblur='onBlurFunction()')
+    kode_hrg = fields.Char('Kode Harga')
     
-    # buatautocomplite
-    @api.onchange("partner_id")
-    def _onchange_partner_id(self):
-            if self.partner_id:
-             self.diskon  = self.partner_id.diskon
-             
-            # self.discount  = self.partner_id.discount
-            # self.description = "Default description for %s" % (self.partner_id.diskon)
+    @api.onchange('barcode')
+    def add_new_order_line(self):
+        print(self)
+        product = self.env['product.product'].search([('barcode', '=', self.barcode)], limit=1)
+        if product:
+            order_line_data = {
+                'product_id': product.id,
+                'product_uom_qty': 1,  # Adjust quantity as needed
+                'discount' : self.partner_id.diskon
+                # Add other required fields
+            }
+            self.order_line = [(0, 0, order_line_data)]
+        self.barcode = ''
+
     
-        
-        
-  
-  
-
-
-# class cust_diskon(models.Model):
-#     _inherit = 'pos.order'
-#     # _description = 'cust_diskon.cust_diskon'
-#     # diskon = fields.Float('Diskon customer') 
-    
-#     diskon = fields.Integer('diskon', related='partner_id.diskon')
-
-
-
-        
-# class cust_diskonsale(models.Model):
-#     _inherit = 'pos.order'
-#      _description = 'cust_diskon.cust_diskon'
-#     diskon = fields.Float('Diskon Custsomer')
-    # partner_id = fields.Many2one("res.partner", string="Partner")
-
-# class cust_diskonPOS(models.Model):
-#     _inherit = 'loyalty.program'
-#     # _description = 'cust_diskon.cust_diskon'
-#     diskon = fields.Float('Diskon Customer')
-#     # partner_id = fields.Many2one("res.partner", string="Partner")
-
-# buatautocomplite
     @api.onchange("partner_id")
     def _onchange_partner_id(self):
         if self.partner_id:
-         self.diskon  = self.partner_id.diskon
-        # self.discount  = self.partner_id.discount
-        # self.description = "Default description for %s" % (self.partner_id.diskon)
-        
-    # class CustomSequence(models.Model):
-    #  _inherit = 'ir.sequence'
-
-    # def _next(self):
-    #     # Custom logic to generate the next sequence number
-    #     # For example, you can add a prefix, suffix, or any other customization.
-    #     # Make sure to call super to maintain the Odoo's sequence behavior.
-    #     next_number = super(CustomSequence, self)._next()
-    #     # Customize the 'next_number' as needed
-    #     return next_number
-
-
-
-
-
-   
-    # value = fields.Integer()
-    # value2 = fields.Float(compute="_value_pc", store=True)
-    # description = fields.Text()
-
-    # @api.depends('value')
-    # def _value_pc(self):
-    #     for record in self:
-    #         record.value2 = float(record.value) / 100
-
-    # @api.onchange('diskon')
-    # def _onchange_vehicle(self):
-    #     sale.order = "Rental Order for %s" % self.vehicle_id.name
+            self.diskon  = self.partner_id.diskon
+            if self.order_line:
+                for line in self.order_line:
+                    line.discount = self.diskon

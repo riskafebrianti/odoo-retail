@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <field name="product_template_id" position="after">
                 <field name="barcode"></field>
+                <field name="kode_hrg"></field>
             </field>
              <field name="barcode" position="after">
                 <field name="kode_hrg"></field>
