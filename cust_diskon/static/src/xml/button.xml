@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+    <templates>
+        <t t-name="button" owl="1">
+            <div class="control-button">
+                <i class="fa fa-barcode" role ="img" aria-label="button" title="button" /> 
+                    <span> </span>
+                    <span>Barcode</span>
+                
+            </div>
+        </t>
+    </templates>
