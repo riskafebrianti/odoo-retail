@@ -60,6 +60,7 @@
                                 <field name="selected" widget="boolean_toggle"/>
                                 <field name="product_id"/>
                                 <field name="kode_hrg" optional="show"/>
+
                                 <field name="barcode" optional="show"/>
                                 <field name="company_id" groups="base.group_multi_company" optional="hide"/>
                                 <button name="action_minus_qty" type="object" title="Decrease Qty" icon="fa-minus" class="btn-light"/>

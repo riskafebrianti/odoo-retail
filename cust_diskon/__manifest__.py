@@ -32,18 +32,25 @@
         'views/barcode.xml',
     ],
 
-#     'assets': {
-# #     'point_of_sale.assets': [
-# #     'cust_diskon/static/src/js/CategoryControlButton.js',
-# #    ],
-#     'web.assets_qweb': [
-#        'cust_diskon/static/src/xml/CategoryControlButton.xml',
-#    ],
-   
-   
+'assets': {
+   'point_of_sale.assets': [
+       'cust_diskon/static/src/xml/button.xml',
+       'cust_diskon/static/src/js/button.js',
+   ],
+},
+    #'assets': {
+    #     'point_of_sale.assets': [
+    #         'cust_diskon/static/src/xml/button.xml',
+    #         'cust_diskon/static/src/js/button.js',
+    #     ],
+    # },
+
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
     
+
 }
+
+

@@ -10,6 +10,7 @@
                          <span t-if="label.product_id.product_template_attribute_value_ids"
                                t-esc="u', '.join(map(lambda x: x.attribute_line_id.attribute_id.name + u': ' + x.name, label.product_id.product_template_attribute_value_ids))"
                                class="badge"/>
+
                                
                     </div>
                     <div style="overflow:hidden; width: 100%; padding: 0; margin: 0; font-size: 21px; font-weight:  ">
@@ -24,6 +25,14 @@
                         <span t-field="label.product_id.lst_price"/>
                         <span t-if="label.product_id.currency_id.position == 'after'" t-field="label.product_id.currency_id.symbol"/>
                     </div> -->
+
+                    </div>
+                    <div style="width: 100%; padding: 0; margin: 0; font-size: 21px; font-weight: bold;">
+                        <span t-if="label.product_id.currency_id.position == 'before'" t-field="label.product_id.currency_id.symbol"/>
+                        <span t-field="label.product_id.lst_price"/>
+                        <span t-if="label.product_id.currency_id.position == 'after'" t-field="label.product_id.currency_id.symbol"/>
+                    </div>
+
                     <div t-if="label.product_id.default_code" style="width: 100%; padding: 0; margin: 0; font-size: 12px;">
                         <span t-field="label.product_id.default_code"/>
                     </div>
