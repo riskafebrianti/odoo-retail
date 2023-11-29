@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="sale_report_inherit_template" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//th[@name='th_description']" position="after">
+         <th name="th_default_code" class="text-end">Part Number</th>
+<!-- 
+       <div t-field="doc.partner_id"
+            t-options='{"widget": "contact", "fields": ["mobile", "email"], "no_marker": True}' /> -->
+    </xpath>
+    <xpath expr="//td[@name='td_name']" position="after">
+        <td name="td_default_code"><span t-field="line.product_template_id.default_code"/></td>
+
+    </xpath>
+</template>
+</odoo>

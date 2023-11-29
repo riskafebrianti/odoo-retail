@@ -30,20 +30,35 @@
         'views/diskon.xml',
         # 'views/asset.xml',
         'views/barcode.xml',
+        'report/sale_report.xml',
+        'report/purchase_po_report.xml',
+        'report/stock_picking_report.xml',
+        'report/stock_dileveryS_report.xml',
+        # 'report/product_product_reports.xml',
+        # 'report/product_product_templates.xml',
+      
     ],
-
+    # 'qweb': [
+    #     'report/product_product_reports.xml',
+    #     'report/product_product_templates.xml',
+    # ],
 'assets': {
-   'point_of_sale.assets': [
-       'cust_diskon/static/src/xml/button.xml',
-       'cust_diskon/static/src/js/button.js',
+   'web.assets_backend': [
+       'cust_diskon/static/src/js/tes.js',
+
    ],
+   
+    # 'web.assets_qweb':[
+    #     'report/sale_report.xml',
+    # ],
+
 },
-    #'assets': {
-    #     'point_of_sale.assets': [
-    #         'cust_diskon/static/src/xml/button.xml',
-    #         'cust_diskon/static/src/js/button.js',
-    #     ],
-    # },
+    # 'assets': {
+    # #     'point_of_sale.assets': [
+    # #         'cust_diskon/static/src/xml/button.xml',
+    # #         'cust_diskon/static/src/js/button.js',
+    # #     ],
+    #  },
 
     # only loaded in demonstration mode
     'demo': [
