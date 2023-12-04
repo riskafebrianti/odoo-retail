@@ -13,7 +13,7 @@
              <field name="barcode" position="after">                 
                 <field name="kode_hrg"></field>
             </field>
-
+           
             <!-- <field name="barcode" position="after">
                 
                 <button string="set partner data" name="set_partner_ref" type="object" class="oe_highlight"/> 
@@ -50,7 +50,11 @@
         
          <field name="categ_id" position="after">
                 <field name="kode_hrg"></field>
+                <!-- <field name="brand"></field> -->
             </field>
+        <field name="invoice_policy" position="after">                 
+                <field name="brand"></field>
+        </field>
             
      </field>   
     </record>
