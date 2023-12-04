@@ -11,6 +11,7 @@
             <!-- Add your xpath here -->
             <field name="vat" position="after">
                 <field name="diskon"></field> 
+                <field name="kodevend"></field> 
             </field>
           
         </field>

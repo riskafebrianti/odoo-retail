@@ -3,7 +3,7 @@
 
     <template id="stock_dileveryS" inherit_id="stock.report_delivery_document">
 
-        <xpath expr="//t[@t-set='information_block']" position="before">
+        <xpath expr="//t[@t-set='information_block']" position="replace">
         <br> </br>
              <t t-set="information_block">
                     <div class="row">

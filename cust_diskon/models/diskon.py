@@ -4,6 +4,8 @@ from odoo import models, fields, api
 class cust_diskon2(models.Model):
     _inherit = 'res.partner'
     diskon = fields.Integer('Diskon')
+    kodevend = fields.Char('kodevend')
+    
 
 # class barcode(models.Model):
 #     _inherit = 'res.partner'
