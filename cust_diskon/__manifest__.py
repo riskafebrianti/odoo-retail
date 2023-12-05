@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/diskon.xml',
+        'views/saleorder.xml',
         # 'views/product_tmpl.xml',
         # 'views/asset.xml',
         'views/barcode.xml',
