@@ -29,6 +29,7 @@
         'views/templates.xml',
         'views/diskon.xml',
         'views/saleorder.xml',
+        # 'report/tagihan_report.xml',
         # 'views/product_tmpl.xml',
         # 'views/asset.xml',
         'views/barcode.xml',

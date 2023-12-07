@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <record id="view_form_res.partner" model="ir.ui.view">
+    <field name="name">res.partner.form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base_accounting_kit.customer_statements_form_view"/>
+    <field name="arch" type="xml">
+        <form>
+
+            <header>
+                <button string="Print Report" type="object" class="oe_highlight" icon="fa-print"
+                        name="print_report"/>
+            </header>
+        </form>
+    </field>
+</record> -->
+
+
+    <record id="inherit_view_res_partner_customer_statements_form_view" model="ir.ui.view">
+        <field name="name">res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base_accounting_kit.customer_statements_form_view"/>
+        <field name="arch" type="xml">
+            <!-- <field name="barcode" position="after">
+               <button icon="fa-barcode" name="set_partner_ref" type="object" class="oe_highlight"/> 
+                <field name="kode_hrg"></field>
+
+            </field> -->
+<!--             
+         <form>
+
+            <header>
+                <button string="Print Report" type="object" class="oe_highlight" icon="fa-print"
+                        name="kode_hrg"/>
+            </header>
+        </form> -->
+         <field name="next_reminder_date" position="after">
+                <field name="kode_hrg"></field>
+                
+            </field>
+            
+     </field>   
+    </record>
+
+</odoo>
