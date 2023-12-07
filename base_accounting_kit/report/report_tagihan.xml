@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_tagihan">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="80"/>
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h2>Penagihan Invoice </h2>
+                    <br></br><br></br>
+                    <div class="row">
+                       
+                        <div>
+                          <table class="table table-sm"  name="stock_move_table">
+                        <thead>
+                            <tr>
+                                <th name="no"><strong>No</strong></th>
+                                <th name="th_sm_product"><strong>Number</strong></th>
+                                <th name="due"><strong>Due Date</strong></th>
+                                <th name="Tax_Exclude"><strong>Tax Excluded</strong></th>
+                                <th name="Total"><strong>Total</strong></th>
+                                <th name="Total_crc"><strong>Total in Currency</strong></th>
+                                <th name="payment_state"><strong>Payment State</strong></th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                            
+                                <t t-set="no" t-value="1"/>
+                                <t t-foreach="o.invoice_list" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="no"/> </td>
+                                        <td><span t-field="inv.name"/> </td>
+                                        <td><span t-field="inv.invoice_date_due"/> </td>
+                                        <td><span t-field="inv.amount_untaxed_signed"/> </td>
+                                        <td><span t-field="inv.amount_total_signed"/> </td>
+                                        <td><span t-field="inv.amount_total_in_currency_signed"/> </td>
+                                        <td><span t-field="inv.payment_state"/> </td>
+                                    </tr>
+                                    
+                                </t>
+                          
+
+                            </t>
+                        </tbody>
+                       
+                    </table>
+                        </div> 
+                    </div>
+                    
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
