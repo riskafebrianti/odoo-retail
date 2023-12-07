@@ -20,7 +20,9 @@ class PrintProductLabelLine(models.TransientModel):
     barcode = fields.Char(compute='_compute_barcode')
     name = fields.Char(compute='_compute_name')
     kode_hrg = fields.Char(compute='_compute_kode_hrg')
-    default_code = fields.Char(compute='_compute_default_code')
+    # lot_id = fields.Char( string='Lot')
+    lot_id = fields.Many2one(comodel_name='stock.lot', required=True)
+    
 
     qty_initial = fields.Integer(string='Initial Qty', default=1)
     qty = fields.Integer(string='Label Qty', default=1)

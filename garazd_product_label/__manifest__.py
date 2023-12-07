@@ -14,7 +14,7 @@
     'images': ['static/description/banner.png', 'static/description/icon.png'],
     'live_test_url': 'https://garazd.biz/r/4NM',
     'depends': [
-        'product',
+        'product',"stock",
     ],
     'data': [
         'security/ir.model.access.csv',
