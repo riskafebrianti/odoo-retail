@@ -68,22 +68,23 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
     # _description = 'cust_diskon.cust_diskon'
     diskon = fields.Integer('Diskon customer') 
-    barcode = fields.Char(string='Barcode',onfocus='onFocusFunction()', onblur='onBlurFunction()')
+    barcode = fields.Char(string='Barcode',)
     kode_hrg = fields.Char('Kode Harga')
     
     @api.onchange('barcode')
     def add_new_order_line(self):
         print(self)
-        product = self.env['product.product'].search([('barcode', '=', self.barcode)], limit=1)
-        if product:
-            order_line_data = {
-                'product_id': product.id,
-                'product_uom_qty': 1,  # Adjust quantity as needed
-                'discount' : self.partner_id.diskon
-                # Add other required fields
-            }
-            self.order_line = [(0, 0, order_line_data)]
-        self.barcode = ''
+        if self.barcode != False:
+            product = self.env['product.product'].search([('barcode', '=', self.barcode)], limit=1)
+            if product:
+                order_line_data = {
+                    'product_id': product.id,
+                    'product_uom_qty': 1,  # Adjust quantity as needed
+                    'discount' : self.partner_id.diskon
+                    # Add other required fields
+                }
+                self.order_line = [(0, 0, order_line_data)]
+            self.barcode = ''
 
     
     @api.onchange("partner_id")
