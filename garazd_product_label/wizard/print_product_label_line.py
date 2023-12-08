@@ -15,13 +15,12 @@ class PrintProductLabelLine(models.TransientModel):
     selected = fields.Boolean(string='Print', default=True)
     wizard_id = fields.Many2one(comodel_name='print.product.label')  # Not make required
     product_id = fields.Many2one(comodel_name='product.product', required=True)
-    lot_id = fields.Many2one(comodel_name='stock.lot', required=True)
     # lot_id = fields.Many2one('stock.lot')
     barcode = fields.Char(compute='_compute_barcode')
     name = fields.Char(compute='_compute_name')
     kode_hrg = fields.Char(compute='_compute_kode_hrg')
     # lot_id = fields.Char( string='Lot')
-    lot_id = fields.Many2one(comodel_name='stock.lot', required=True)
+    lot_id = fields.Many2one(comodel_name='stock.lot')
     
 
     qty_initial = fields.Integer(string='Initial Qty', default=1)
@@ -41,7 +40,7 @@ class PrintProductLabelLine(models.TransientModel):
     @api.depends('lot_id')
     def _compute_name(self):
         for label in self:
-            label.name = label.product_id.name
+            label.name = label.lot_id.name
     
     @api.depends('product_id')
     def _compute_barcode(self):
