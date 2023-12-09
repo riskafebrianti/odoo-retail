@@ -114,12 +114,12 @@
 
     <!-- coba print tagihan -->
     <record id="action_report_tagihan" model="ir.actions.report">
-        <field name="name">Tagihan tes</field>
+        <field name="name">Print</field>
         <field name="model">res.partner</field>
         <field name="report_type">qweb-html</field>
         <field name="report_name">base_accounting_kit.report_tagihan</field>
         <field name="report_file">base_accounting_kit.report_tagihan</field>
-        <field name="print_report_name">'report_tagihan'</field>
+        <field name="print_report_name">'Follow-up Report'</field>
         <!-- <field name="paperformat_id" ref="base_accounting_kit.paperformat_custom"/> -->
         <field name="binding_model_id" ref="model_res_partner"/>
     </record>

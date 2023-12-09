@@ -7,7 +7,8 @@
             <t t-set="data_report_dpi" t-value="80"/>
             <t t-call="web.internal_layout">
                 <div class="page">
-                    <h2>Penagihan Invoice </h2>
+                    <h2>Follow-up Reports</h2>
+                    <!-- <t t-esc="res_partner.name"/> -->
                     <br></br><br></br>
                     <div class="row">
                        
@@ -16,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th name="no"><strong>No</strong></th>
+                                <th name="no"><strong>Name</strong></th>
                                 <th name="th_sm_product"><strong>Number</strong></th>
                                 <th name="due"><strong>Due Date</strong></th>
                                 <th name="Tax_Exclude"><strong>Tax Excluded</strong></th>
@@ -32,6 +34,7 @@
                                 <t t-foreach="o.invoice_list" t-as="inv">
                                     <tr>
                                         <td><span t-esc="no"/> </td>
+                                        <td><span t-esc="inv.invoice_partner_display_name"/> </td>
                                         <td><span t-field="inv.name"/> </td>
                                         <td><span t-field="inv.invoice_date_due"/> </td>
                                         <td><span t-field="inv.amount_untaxed_signed"/> </td>
