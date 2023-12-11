@@ -3,7 +3,7 @@
 
     <template id="stock_dileveryS" inherit_id="stock.report_delivery_document">
 
-        <xpath expr="//t[@t-call='web.html_container']" position="after">
+        <xpath expr="//t[@t-set='partner']" position="after">
              <span style="font-size: 30pt;"><strong>SURAT JALAN</strong></span>
         </xpath>
 
@@ -12,7 +12,7 @@
                  
     
              <t t-set="information_block">
-             <span style="font-size: 30pt;"><strong>SURAT JALAN</strong></span>
+             <!-- <span style="font-size: 30pt;"><strong>SURAT JALAN</strong></span> -->
                     <div class="row">
                         <div class="col-7" name="div_incoming_address">
                             <t t-set="show_partner" t-value="False" />
