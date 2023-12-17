@@ -82,22 +82,21 @@
                         <div class="page" style="page-break-after: always;">
                             <div style="height: 136px !important; width: 165px !important;">
                                 <table class="table" t-att-style="'height: 100%; border: {};'.format('%dpx solid #777;' % label.wizard_id.border_width if label.wizard_id.border_width else '0')">
-                                    <tr style="border: 0;">
+                                    <tr style="border: 0;"> 
                                         <td class="text-center" style="padding: 0; margin: 0; border: 0;">
-                                            <div style="overflow: hidden; height: 64px !important; font-size: 13px; line-height: 1.2; margin-bottom: 2px;">
+                                            <div style="overflow: hidden; height: 64px !important; font-size: 13px; line-height: 0.6; margin-bottom: 2px; border: 0px solid black;">
                                                 <span t-field="label.product_id.name" style="line-height: 1.2;"/>
                                                 <span t-if="label.product_id.product_template_attribute_value_ids"
                                                       t-esc="u', '.join(map(lambda x: x.attribute_line_id.attribute_id.name + u': ' + x.name, label.product_id.product_template_attribute_value_ids))"
                                                       class="badge"/>
+                                            <div class="text-center" style="font-size: 11px; border: 0px solid black; font-weight: bold; line-height: 1.0; text-align: right; margin-bottom: 0px; ">
+                                                    <span t-field="label.product_id.kode_hrg"/>
                                             </div>
-                                            <div style="width: 100%; overflow: hidden; height: 26px !important;">
-                                                <div style="float: right; width: 60%; font-size: 20px; font-weight: bold; line-height: 1.0; text-align: right; margin-bottom: 0px;">
-                                                    <span t-if="label.product_id.currency_id.position == 'before'" t-field="label.product_id.currency_id.symbol"/>
-                                                    <span t-field="label.product_id.lst_price"/>
-                                                    <span t-if="label.product_id.currency_id.position == 'after'" t-field="label.product_id.currency_id.symbol"/>
-                                                </div>
-                                                <div style="float: left; width: 40%; font-size: 10px; font-weight: 900; line-height: 1.0; text-align: left; margin-bottom: 0px; padding-top: 6px;">
-                                                    <span t-if="label.product_id.default_code"><span t-field="label.product_id.default_code"/> </span>
+
+                                            </div>
+                                            <div style="width: 100%; overflow: hidden; border: 0px solid black; height: 24px !important;">
+                                            <div style="float: left; width: 100%; font-size: 12px; font-weight: 900; line-height: 1.0; text-align: left; margin-bottom: 0px; padding-top: 10px;">
+                                                    <span t-if="label.lot_id.name">PN :<span t-field="label.lot_id.name"/> </span>
                                                 </div>
                                             </div>
                                             <t t-if="label.product_id.barcode">
