@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 <template id="sale_report_inherit_template" inherit_id="sale.report_saleorder_document">
-    <xpath expr="//th[@name='th_description']" position="after">
+    <!-- <xpath expr="//th[@name='th_description']" position="after">
          <th name="th_default_code" class="text-end">Part Number</th>
-<!-- 
-       <div t-field="doc.partner_id"
-            t-options='{"widget": "contact", "fields": ["mobile", "email"], "no_marker": True}' /> -->
+         
+
     </xpath>
     <xpath expr="//td[@name='td_name']" position="after">
         <td name="td_default_code"><span t-field="line.product_template_id.default_code"/></td>
 
-    </xpath>
+    </xpath> -->
+<xpath expr="//div[@class='page']" position="replace">
+ <div class="page">
+            <div class="oe_structure"/>
+
+            <h2 class="mt-4">
+                <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
+                <span t-elif="doc.state in ['draft','sent']">asada # </span>
+                <span t-else="">Order # </span>
+                <!-- <span t-field="doc.name"/> -->
+            </h2>
+
+            <div class="row mt-4 mb-4" id="informations">
+                <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2" name="informations_reference">
+                    <strong>Your Reference:</strong>
+                    <p class="m-0" t-field="doc.client_order_ref"/>
+                </div>
+                <div t-if="doc.date_order" class="col-auto col-3 mw-100 mb-2" name="informations_date">
+                    <strong t-if="doc.state in ['draft', 'sent']">Quotation Date:</strong>
+                    <strong t-else="">Order Date:</strong>
+                    <p class="m-0" t-field="doc.date_order" t-options='{"widget": "date"}'/>
+                </div>
+                <div t-if="doc.validity_date and doc.state in ['draft', 'sent']"
+                    class="col-auto col-3 mw-100 mb-2"
+                    name="expiration_date">
+                    <strong>Expiration:</strong>
+                    <p class="m-0" t-field="doc.validity_date"/>
+                </div>
+                <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Salesperson:</strong>
+                    <p class="m-0" t-field="doc.user_id"/>
+                </div>
+            </div>
+        </div>
+</xpath>
 </template>
 </odoo>

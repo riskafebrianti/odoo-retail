@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','contacts','sale','sale_management','point_of_sale','product'],
+    'depends': ['base','contacts','sale','sale_management','product'],
 
     # always loaded
     'data': [
@@ -33,10 +33,12 @@
         # 'views/product_tmpl.xml',
         # 'views/asset.xml',
         'views/barcode.xml',
-        'report/sale_report.xml',
+        'report/report.xml',
+        'report/report_sale.xml',
         'report/purchase_po_report.xml',
         'report/stock_picking_report.xml',
         'report/stock_dileveryS_report.xml',
+        
 
         # 'report/addcamerainv.xml',
         

@@ -1,10 +1,16 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
+from datetime import datetime, timedelta
+from odoo.tools import add, float_compare, frozendict, split_every, format_date
+from num2words import num2words
+
+
 
 # ini buat di res_partner
 class cust_diskon2(models.Model):
     _inherit = 'res.partner'
     diskon = fields.Integer('Diskon')
-    kodevend = fields.Char('kodevend')
+    kodevend = fields.Char('Kode Vendor')
     
 
 # class barcode(models.Model):
@@ -68,8 +74,59 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
     # _description = 'cust_diskon.cust_diskon'
     diskon = fields.Integer('Diskon customer') 
-    barcode = fields.Char(string='Barcode',)
+    barcode = fields.Char(string='Barcode')
     kode_hrg = fields.Char('Kode Harga')
+
+def set_invoice_date(self,date):
+    indonesian_month  = ['NN'
+    , 'Januari'
+    , 'Februari'
+    , 'Maret'
+    , 'April'
+    , 'Mei'
+    , 'Juni'
+    , 'Juli'
+    , 'Agustus'
+    , 'September'
+    , 'Oktober'
+    , 'November'
+    , 'Desember']
+    if self.invoice_count > 0:
+        for inv in range(len(self.invoice_ids)-1, -1, -1):
+            if self.invoice_ids[inv].invoice_date:
+                date_format = datetime.strptime(str(self.invoice_ids[inv].invoice_date), '%Y-%m-%d')
+                day = '{:02}'.format(date_format.day)
+                date_return = day+' '+str(indonesian_month[int(date_format.month)])+' '+str(date_format.year)
+                return date_return
+    else:
+        date_format = datetime.strptime(str(date), '%Y-%m-%d')
+        day = '{:02}'.format(date_format.day)
+        date_return = day+' '+str(indonesian_month[int(date_format.month)])+' '+str(date_format.year)
+        return date_return
+
+
+
+
+    def set_indonesian_date(self, date):
+        indonesian_month  = ['NN'
+            , 'Januari'
+            , 'Februari'
+            , 'Maret'
+            , 'April'
+            , 'Mei'
+            , 'Juni'
+            , 'Juli'
+            , 'Agustus'
+            , 'September'
+            , 'Oktober'
+            , 'November'
+            , 'Desember']
+            
+        date_format = datetime.strptime(str(date), '%Y-%m-%d')
+        day = '{:02}'.format(date_format.day)
+        date_return = day+' '+str(indonesian_month[int(date_format.month)])+' '+str(date_format.year)
+
+        return date_return
     
     @api.onchange('barcode')
     def add_new_order_line(self):
@@ -94,3 +151,4 @@ class SaleOrder(models.Model):
             if self.order_line:
                 for line in self.order_line:
                     line.discount = self.diskon
+

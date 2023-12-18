@@ -3,18 +3,16 @@
 
     <template id="stock_dileveryS" inherit_id="stock.report_delivery_document">
 
-        <xpath expr="//t[@t-set='partner']" position="after">
-             <span style="font-size: 30pt;"><strong>SURAT JALAN</strong></span>
-        </xpath>
+      <xpath expr="//div[@class='page']" position="after">
+</xpath>
 
        
         <xpath expr="//t[@t-set='information_block']" position="replace">
-                 
-    
+
              <t t-set="information_block">
-             <!-- <span style="font-size: 30pt;"><strong>SURAT JALAN</strong></span> -->
                     <div class="row">
                         <div class="col-7" name="div_incoming_address">
+                            <span style="font-size: 30pt;"><strong>SURAT JALAN</strong></span><br></br>
                             <t t-set="show_partner" t-value="False" />
                             <div name="vendor_address" t-if="o.picking_type_id.code=='incoming' and partner">
                                 <span><strong>Vendor Address:</strong></span>

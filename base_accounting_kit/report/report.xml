@@ -114,7 +114,7 @@
 
     <!-- coba print tagihan -->
     <record id="action_report_tagihan" model="ir.actions.report">
-        <field name="name">Print</field>
+        <field name="name">Follow-up Report</field>
         <field name="model">res.partner</field>
         <field name="report_type">qweb-html</field>
         <field name="report_name">base_accounting_kit.report_tagihan</field>

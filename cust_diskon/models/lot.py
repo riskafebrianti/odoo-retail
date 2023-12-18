@@ -49,9 +49,9 @@ class StockMove(models.Model):
                                 'company_id':self.company_id.id
                             })
                     else:
-                        raise UserError('Isi inisial kode vendor ..')
+                        raise UserError('Silahkan Isi Kode Vendor ...')
                 else:
-                    raise UserError('Isi internal reference ..')
+                    raise UserError('Silahkan Isi Internal Reference ...')
                 for xrec in self.move_line_ids:
                     id_lot = self.env['stock.lot'].search([
                         ('name','=',kode_vend)
