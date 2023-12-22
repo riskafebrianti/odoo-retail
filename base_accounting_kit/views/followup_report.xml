@@ -38,6 +38,7 @@
                             <notebook colspan="4">
                                 <page string="Invoice Details">
                                     <field name="invoice_list"/>
+                                    <!-- <field name="user_id"/> -->
                                 </page>
 
                             </notebook>
@@ -72,6 +73,7 @@
                 <tree string="Follow-up Reports Tree View" create="false" import="false" delete="false">
                     <field name="currency_id" invisible="1"/>
                     <field name="name"/>
+                    
                     <field name="total_due" widget="monetary" options="{'currency_field': 'currency_id'}" sum="Total"/>
                     <field name="total_overdue" widget="monetary" options="{'currency_field': 'currency_id'}"
                            sum="Total"/>

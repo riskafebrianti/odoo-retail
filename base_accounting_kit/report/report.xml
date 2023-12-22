@@ -120,8 +120,8 @@
         <field name="report_name">base_accounting_kit.report_tagihan</field>
         <field name="report_file">base_accounting_kit.report_tagihan</field>
         <field name="print_report_name">'Follow-up Report'</field>
-        <!-- <field name="paperformat_id" ref="base_accounting_kit.paperformat_custom"/> -->
+
         <field name="binding_model_id" ref="model_res_partner"/>
-    </record>
+    </record> 
     
 </odoo>

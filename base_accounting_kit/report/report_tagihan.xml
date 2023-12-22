@@ -1,11 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<template id="report_tagihan"> 
+<t t-call="web.html_container">   
+    <t t-foreach="docs" t-as="x">
+        <div class="page">
+            
+<br/>         
+            <div style="width:30%; border:0px solid black; display: block; float:right;">
+                <table>
+<br/>  
+                    <tr>
+                        <td>Samarinda,</td>            
+                        
+                        <td></td>
+                        <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></td>
+                        <!-- <td><span> <t t-esc="x.set_indonesian_date(x.create_date)"/></span></td> -->
+
+                        
+                    </tr>        
+                </table>
+            </div>
+        
+
+            <div style="border:0px solid black; display: block; float:left;">
+                    <span style="font-size:28px; font-weight: bold;"> GEMILANG AUTO PERKASA <t t-esc="x.company_id.name"/></span> <br/>
+                    <span  style="margin-top:5px; border:0px solid black;" t-field="x.company_id.street"/> JL. A Yani Blok. M No.1 Temindung Permai, Sungai Pinang<br/>
+                    <span  t-field="x.company_id.city"/> Samarinda
+                    <td>Telp. </td><span t-field="x.company_id.phone"/>0<br/>
+                    <span style="font-size:25px;">Follow Up Report </span> <br/>
+                   
+
+                    <span>Kepada</span>
+                    <span>:</span>
+                    <span t-field="docs.invoice_list[0].invoice_partner_display_name"/>
+            </div>    
+             <div style="margin-top:11%; border-bottom-style: double;"></div>  
+   </div>    
+
+         
+            
+       
+<br/>      
+<br/>
+
+<div class="page">
+    <table style="width:100%; border-collapse: collapse; border: 1px solid;">
+
+        <tr>
+            <td style="border: 1px solid;  font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:2%;">NO</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:17%;">Description</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Due Date</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:8%;">Reference</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Tax Excluded</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Total</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Payment State</td>
+            
+            
+        </tr>
+                            
+            <t t-set="no" t-value="1"/>
+            <t t-foreach="x.invoice_list" t-as="inv">
+                <tr>
+                    <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
+                    <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.name"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.invoice_date_due"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.ref"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.amount_untaxed_signed"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.amount_total_signed"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.payment_state"/> </td>
+                </tr>
+               
+                <t t-set="no" t-value="no + 1"/>
+                
+
+            </t>
+         <tr>
+                <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="6" widget="monetary"><span t-esc="docs.total_overdue"/></td> -->
+                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="6">Rp <span t-esc="'{0:,.2f}'.format(int(x.total_overdue))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td>
+
+        </tr>
+                         
+    </table>
+</div>
+    </t>
+        <!-- <div class="header">
+            <img class="logo" t-att-src="'/litebrain_addons_printout/static/img/logo.png'"/>
+            <style>
+                .logo {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 300px;
+                    height: auto;
+                }
+            </style>
+        </div> -->
+        <!-- <div class="footer"> -->
+        <!-- <div>Date: <span t-esc="formatLang(time.strftime('%Y-%m-%d'), date=True)"/></div> -->
+            <!-- <div class="text-right" style="text-align:right;border-top: 1px solid black;">    
+                <span t-esc="user.name"/> <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>
+                <strong><span class="page"/>/<span class="topage"/></strong>
+            </div>
+        <style>
+            .footer {
+                text-align: right;
+            }
+        </style> -->
+        <!-- </div> -->
+</t>
+</template>
+</odoo>
+
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
     <template id="report_tagihan">
         <t t-call="web.html_container">
             <t t-set="data_report_margin_top" t-value="12"/>
             <t t-set="data_report_header_spacing" t-value="9"/>
             <t t-set="data_report_dpi" t-value="80"/>
             <t t-call="web.internal_layout">
+
+
+
+            
                 <div class="page">
                     <h2>Follow-up Reports  <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </h2>
                   
@@ -19,9 +138,9 @@
                                 <th name="no"><strong>No</strong></th>
                                 <th name="th_sm_product"><strong>Number</strong></th>
                                 <th name="due"><strong>Due Date</strong></th>
+                                <th name="Total_crc"><strong>Reference</strong></th>
                                 <th name="Tax_Exclude"><strong>Tax Excluded</strong></th>
                                 <th name="Total"><strong>Total</strong></th>
-                                <th name="Total_crc"><strong>Total in Currency</strong></th>
                                 <th name="payment_state"><strong>Payment State</strong></th>
                             
                             </tr>
@@ -33,12 +152,11 @@
                                 <t t-foreach="o.invoice_list" t-as="inv">
                                     <tr>
                                         <td><span t-esc="no"/> </td>
-                                        <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
                                         <td><span t-field="inv.name"/> </td>
                                         <td><span t-field="inv.invoice_date_due"/> </td>
+                                        <td><span t-field="inv.ref"/> </td>
                                         <td><span t-field="inv.amount_untaxed_signed"/> </td>
                                         <td><span t-field="inv.amount_total_signed"/> </td>
-                                        <td><span t-field="inv.amount_total_in_currency_signed"/> </td>
                                         <td><span t-field="inv.payment_state"/> </td>
                                     </tr>
                                     <t t-set="no" t-value="no + 1"/>
@@ -56,4 +174,4 @@
             </t>
         </t>
     </template>
-</odoo>
+</odoo> -->
