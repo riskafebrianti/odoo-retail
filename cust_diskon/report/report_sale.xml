@@ -55,17 +55,18 @@
                             <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:8%;">Taxes</td>
                             <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Qty</td>
                             <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Unit Price</td>
-                        </tr>                  
+                        </tr>       
+                        <t t-set="no" t-value="1"/>           
                         <t t-foreach="x.order_line" t-as="inv">
-                        <tr>
-                            <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
-                            <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
-                            <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_template_id.name"/> </td>
-                            <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_template_id.default_code"/> </td>
-                            <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.tax_id"/> </td>
-                            <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_uom_qty"/> </td>
-                            <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.price_unit"/> </td>
-                        </tr>
+                            <tr>
+                                <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
+                                <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_template_id.name"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_template_id.default_code"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.tax_id"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_uom_qty"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.price_unit"/> </td>
+                            </tr>
                             <t t-set="no" t-value="no + 1"/>
                         </t>                 
                 </table>

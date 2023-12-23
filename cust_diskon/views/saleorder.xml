@@ -36,7 +36,6 @@
     <field name="arch" type="xml">
         <field name="salesman_id" position="after">
             <field name="price_unit"></field>
-            <!-- <field name="barcode"/> -->
         </field>
     </field>
 </record>
