@@ -29,22 +29,16 @@
         'views/templates.xml',
         'views/diskon.xml',
         'views/saleorder.xml',
-        # 'report/tagihan_report.xml',
-        # 'views/product_tmpl.xml',
+        
         # 'views/asset.xml',
         'views/barcode.xml',
         'report/report.xml',
         'report/report_sale.xml',
+        'report/sale_report.xml',
+        'report/report_purchase.xml',
         'report/purchase_po_report.xml',
         'report/stock_picking_report.xml',
-        'report/stock_dileveryS_report.xml',
-        
-
-        # 'report/addcamerainv.xml',
-        
-        # 'report/product_product_reports.xml',
-        # 'report/product_product_templates.xml',
-      
+        'report/stock_dileveryS_report.xml',    
     ],
     # 'qweb': [
     #     'report/product_product_reports.xml',
@@ -75,5 +69,6 @@
     
 
 }
+
 
 

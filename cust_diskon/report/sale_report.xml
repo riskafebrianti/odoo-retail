@@ -10,6 +10,9 @@
         <td name="td_default_code"><span t-field="line.product_template_id.default_code"/></td>
 
     </xpath> -->
+
+
+
 <xpath expr="//div[@class='page']" position="replace">
  <div class="page">
             <div class="oe_structure"/>
@@ -18,7 +21,6 @@
                 <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
                 <span t-elif="doc.state in ['draft','sent']">asada # </span>
                 <span t-else="">Order # </span>
-                <!-- <span t-field="doc.name"/> -->
             </h2>
 
             <div class="row mt-4 mb-4" id="informations">

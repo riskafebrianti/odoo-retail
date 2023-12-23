@@ -41,24 +41,23 @@
         <field name="report_type">qweb-html</field>
         <field name="report_name">cust_diskon.report_sale</field>
         <field name="report_file">cust_diskon.report_sale</field>
-        <!-- <field name="print_report_name">'Sales Order'</field> -->
         <field name="print_report_name">(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Sales Order - %s' % (object.name)</field>
         <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/>
         <field name="binding_model_id" ref="model_sale_order"/>
     </record>
 
     <!-- Start Data Print purchase IN -->
-    <record id="action_purchase" model="ir.actions.report">
+    <!-- <record id="action_purchase_report" model="ir.actions.report">
         <field name="name">Purchase</field>
         <field name="model">purchase.order</field>
         <field name="report_type">qweb-html</field>
         <field name="report_name">cust_diskon.report_purchase</field>
         <field name="report_file">cust_diskon.report_purchase</field>
-        <!-- <field name="print_report_name">'Sales Order'</field> -->
+        <field name="print_report_name">'Sales Order'</field>
         <field name="print_report_name">(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Sales Order - %s' % (object.name)</field>
         <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/>
-        <field name="binding_model_id" ref="model_sale_order"/>
-    </record>
+        <field name="binding_model_id" ref="model_purchase_order"/>
+    </record> -->
 
 
 </odoo>

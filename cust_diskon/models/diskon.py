@@ -77,57 +77,7 @@ class SaleOrder(models.Model):
     barcode = fields.Char(string='Barcode')
     kode_hrg = fields.Char('Kode Harga')
 
-def set_invoice_date(self,date):
-    indonesian_month  = ['NN'
-    , 'Januari'
-    , 'Februari'
-    , 'Maret'
-    , 'April'
-    , 'Mei'
-    , 'Juni'
-    , 'Juli'
-    , 'Agustus'
-    , 'September'
-    , 'Oktober'
-    , 'November'
-    , 'Desember']
-    if self.invoice_count > 0:
-        for inv in range(len(self.invoice_ids)-1, -1, -1):
-            if self.invoice_ids[inv].invoice_date:
-                date_format = datetime.strptime(str(self.invoice_ids[inv].invoice_date), '%Y-%m-%d')
-                day = '{:02}'.format(date_format.day)
-                date_return = day+' '+str(indonesian_month[int(date_format.month)])+' '+str(date_format.year)
-                return date_return
-    else:
-        date_format = datetime.strptime(str(date), '%Y-%m-%d')
-        day = '{:02}'.format(date_format.day)
-        date_return = day+' '+str(indonesian_month[int(date_format.month)])+' '+str(date_format.year)
-        return date_return
 
-
-
-
-    def set_indonesian_date(self, date):
-        indonesian_month  = ['NN'
-            , 'Januari'
-            , 'Februari'
-            , 'Maret'
-            , 'April'
-            , 'Mei'
-            , 'Juni'
-            , 'Juli'
-            , 'Agustus'
-            , 'September'
-            , 'Oktober'
-            , 'November'
-            , 'Desember']
-            
-        date_format = datetime.strptime(str(date), '%Y-%m-%d')
-        day = '{:02}'.format(date_format.day)
-        date_return = day+' '+str(indonesian_month[int(date_format.month)])+' '+str(date_format.year)
-
-        return date_return
-    
     @api.onchange('barcode')
     def add_new_order_line(self):
         print(self)
