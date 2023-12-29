@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','contacts','sale','sale_management','product'],
+    'depends': ['base','web','contacts','sale','sale_management','product','purchase','account'],
 
     # always loaded
     'data': [
@@ -29,13 +29,13 @@
         'views/templates.xml',
         'views/diskon.xml',
         'views/saleorder.xml',
-        
-        # 'views/asset.xml',
+        'views/asset.xml',
         'views/barcode.xml',
-        'report/report.xml',
-        'report/report_sale.xml',
+        'report/header.xml',
+        # 'report/report.xml',
         'report/sale_report.xml',
-        'report/report_purchase.xml',
+        'report/inv_report.xml',
+        # 'report/report_purchase.xml',
         'report/purchase_po_report.xml',
         'report/stock_picking_report.xml',
         'report/stock_dileveryS_report.xml',    

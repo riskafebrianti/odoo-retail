@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="custom_purchase_header_footer" inherit_id="web.external_layout_striped">
+
+<xpath expr="//div[1]" position="replace">
+
+   <div t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
+     <div class="o_background_header" style="position:absolute; color:black;">
+       <div class="float-right">
+            <h3 class="mt0 text-right" t-field="company.report_header"/>
+       </div>
+        <!-- <div class="header_content float-right">
+            <div class="logo" style="">
+          <img t-if="company.logo" style="max-width:260px;max-height:89px;"
+                      t-att-src="image_data_uri(company.logo)"
+                      class="float-left" alt="Logo"/>
+           </div>
+          </div> -->
+           <div style="width:22%; border:0px solid black; display: block;font-size:19px; float:right;">
+                        
+                                <br/>  <br/> <br/> <br/>  
+                            <tr>
+                                <td>No.</td>
+                                <td></td>
+                                <td><span t-field="o.name"/></td>
+                            </tr>      
+                        
+                    </div>
+             <div class="float-left">
+               <div class="details">
+               
+                
+                       <b>
+                           <span style="color:black; font-size:29px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span>
+                       </b>
+                         <br></br>
+                       <t t-if="o.company_id.street">
+                           <span  t-esc="o.company_id.street"/>
+                           <br></br></t>
+                       <t t-if="o.company_id">
+                           <span t-esc="o.company_id.city"/> Telp. <span t-esc="o.company_id.phone"/> 
+                           <br></br>
+                       </t>
+                       <t t-if="o.company_id">
+                          Whatsapp. <span t-esc="o.company_id.mobile"/>
+                           <br></br>
+                       </t>
+                    
+               </div>
+             </div>
+                   
+                   <div style="line-height: 3.1em; border-bottom-style: double; border: 1px solid black; "></div>
+
+     </div>
+     <div style="padding-bottom:15px;"></div>
+     </div>
+</xpath>
+<xpath expr="//div[hasclass('text-center')]" position="replace">
+
+<table style="border: 1px solid; width:100%;">
+<tr>
+  <td colspan="5" style="height:115px; color:black;">   
+      <span style="float:left;">Administrasi,</span>    
+      <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+  </td>
+  <td colspan="5" style="height:115px; color:black;">   
+    <span style="float:left;">Penerima,</span>    
+    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+  </td>
+
+  <td colspan="2"  style="height:115px; color:black;">   
+    <span style="float:left;">Mengetahui,</span>    
+    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+  </td>
+
+
+</tr>
+</table>
+
+ <!-- <div>
+            <span>Administrasi,</span>    
+             <div style="line-height: 1.1em; border: 1px solid black; margin-top:70px; color:black; width:23%;"></div>
+        
+
+        <center>
+       
+            <span>Mengetahui,</span>    
+             <div style="line-height: 1.1em; border: 1px solid black; margin-top:70px; color:black; width:23%;"></div>
+        
+        </center>
+       
+            <span style="float:right;">Penerima,</span>    
+             <div style="line-height: 1.1em; border: 1px solid black; margin-top:70px; color:black; width:23%;"></div>
+       
+</div> -->
+
+     <h6 style="color:black; text-align: right;"><b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
+
+
+    | Page: <span class="page"/> / <span class="topage"/>
+ </b></h6>
+</xpath>
+ </template>
+
+<!-- <template id="sale_report_inherit_template" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//th[@name='th_description']" position="after">
+         <th name="th_default_code" class="text-end">Part Number</th>
+         
+
+    </xpath>
+    <xpath expr="//td[@name='td_name']" position="after">
+        <td name="td_default_code"><span t-field="line.product_template_id.default_code"/></td>
+
+    </xpath>
+     </template> -->
+</odoo>

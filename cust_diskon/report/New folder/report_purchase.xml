@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchase"> 
+        <t t-call="web.html_container">   
+            <t t-foreach="docs" t-as="x">
+                <div class="page">  
+                    
+                                <br/>         
+                    <div style="width:30%; border:0px solid black; display: block; float:right;">
+                        <table>
+                                <br/>  
+                            <tr>
+                                <td>No. PO</td>
+                                <td>:</td>
+                                <td></td>
+                                <td><span t-field="x.name"/></td>
+                            </tr> 
+                            <tr>
+                                <td>Tanggal</td>
+                                <td>:</td>
+                                <td></td>
+                                <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/></td>
+                            </tr>        
+                        </table>
+                    </div>
+                
+
+                    <div style="border:0px solid black; display: block; float:left;">
+                            <span style="font-size:28px; font-weight: bold;"> <t t-esc="x.company_id.name"/></span> <br/>
+                            <span  style="margin-top:5px; border:0px solid black;" t-field="x.company_id.street"/> <br/>
+                            <span  t-field="x.company_id.city"/> 
+                            <td>Telp. </td><span t-field="x.company_id.phone"/><br/>
+                            <span style="font-size:24px;">SALES ORDER </span> <br/>
+                        
+
+                            <span>Kepada</span>
+                            <span>:</span>
+                            <span t-field="x.partner_id.name"/>
+                    </div>    
+                    <div style="margin-top:11%; border-bottom-style: double;"/>
+                    </div>    
+
+                    
+                        
+                
+                <br/>      
+                <br/>
+            </t>
+            <div class="page">
+                <table style="width:100%; border-collapse: collapse; border: 1px solid;">
+                        <tr>
+                            <td style="border: 1px solid;  font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:2%;">NO</td>
+                            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:17%;">Description</td>
+                            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Part Number</td>
+                            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:8%;">Date Req</td>
+                            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Qty</td>
+                            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Unit Price</td>
+                            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Amount</td>
+                        </tr>       
+                        <t t-set="no" t-value="1"/>           
+                        <t t-foreach="x." t-as="inv">
+                            <tr>
+                                <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
+                                <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
+                                <!-- <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_template_id.name"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_template_id.default_code"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.tax_id"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.product_uom_qty"/> </td>
+                                <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.price_unit"/> </td> -->
+                            </tr>
+                            <t t-set="no" t-value="no + 1"/>
+                        </t>                 
+                </table>
+            </div>
+        </t>    
+    </template>
+</odoo>
