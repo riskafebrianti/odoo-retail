@@ -33,7 +33,7 @@ class StockMove(models.Model):
             month = current_date.month
 
             # Format the year and month as YYMM
-            formatted_date = "{:02d}{:02d}".format(year % 100, month)
+            formatted_date = "{:02d}{:02d}".format(month % 100, year)
             if self.has_tracking == 'lot':
                 if self.product_id.default_code:
                     if self.purchase_line_id.order_id.partner_id.kodevend:

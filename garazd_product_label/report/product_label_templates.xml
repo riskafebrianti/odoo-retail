@@ -82,9 +82,9 @@
                         <div class="page" style="page-break-after: always;">
                             <div style="height: 136px !important; width: 165px !important;">
                                 <table class="table" t-att-style="'height: 100%; border: {};'.format('%dpx solid #777;' % label.wizard_id.border_width if label.wizard_id.border_width else '0')">
-                                    <tr style="border: 0;"> 
-                                        <td class="text-center" style="padding: 0; margin: 0; border: 0;">
-                                            <div style="overflow: hidden; max-width: 100px; text-overflow: ellipsis; height: 64px !important; font-size: 11px; line-height: 0.6; margin-bottom: 2px; border: 0px solid black;">
+                                    <tr style="border: 0px solid;"> 
+                                        <td class="text-center" style="padding: 0; margin: 0; border: 0px solid;">
+                                            <div style="width:100% !important; overflow: hidden; max-width: 100%; text-overflow: ellipsis; height: 64px !important; font-size: 11px; line-height: 0.6; margin-bottom: 2px; border: 0px solid black;">
                                                 <span t-field="label.product_id.name" style="line-height: 1.2;"/>
                                                 <span t-if="label.product_id.product_template_attribute_value_ids"
                                                       t-esc="u', '.join(map(lambda x: x.attribute_line_id.attribute_id.name + u': ' + x.name, label.product_id.product_template_attribute_value_ids))"
@@ -94,12 +94,13 @@
                                             </div> -->
 
                                             </div>
-
-                                            <div style="width: 100%; overflow: hidden; border: 0px solid black; height: 20px !important;">
-                                                 <div  class="text-center" style="float: left; width: 100%; font-size: 12px; font-weight: 900; line-height: 1.0; text-align: left; margin-bottom: 0px; padding-top: 2px; ">
-                                                    <span t-field="label.product_id.kode_hrg"/>
+<center>
+                                            <div style="overflow: hidden; border: 0px solid black; height: 20px !important;">
+                                                 <div style="font-size: 12px; font-weight: 900; line-height: 1.0; text-align: left; margin-bottom: 0px; padding-top: 2px; ">
+                                                    <center><span t-field="label.product_id.kode_hrg"/></center>
                                                 </div>
                                             </div>
+                                            </center>
 
                                             <div style="width: 100%; overflow: hidden; border: 0px solid black; height: 16px !important;">
                                             <div style="float: left; width: 100%; font-size: 12px; font-weight: 900; line-height: 1.0; text-align: left; margin-bottom: 0px; padding-top: 1px;  maxlength:4;">

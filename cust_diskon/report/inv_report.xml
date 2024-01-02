@@ -10,7 +10,7 @@
                 <t t-set="o" t-value="o.with_context(lang=lang)" />
                 <t t-set="forced_vat" t-value="o.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
                 
-                <span style="font-size:25px; color:black; font-weight: bold;">INVOICE</span>
+                <span style="font-size:25px; color:black; font-weight: bold; float:right;">INVOICE</span>
                  <br/>  <br/>  <br/>
                 <span>Kepada</span>
                 <span>:</span> <br></br>
@@ -18,10 +18,26 @@
 
                 
             <div style="float:right; width:30%;">
-                <!-- <table style="border:0px solid;"> -->
-            <!-- <table  style="border: px solid !important;"> -->
-                                     
+                <!-- <table style="border:1px solid;"> -->
+                
                 <tr>
+                     <td><strong>Tanggal Invoice</strong></td>
+                     <td>:</td>
+                     <td><span t-field="o.invoice_date"/></td>
+                </tr>
+                <br></br>
+                <tr>
+                     <td><strong>No. SO</strong></td>
+                     <td>:</td>
+                     <td><span t-field="o.invoice_origin"/></td>
+                </tr><br></br>
+                <tr>
+                     <td><strong>No. PO</strong></td>
+                     <td>:</td>
+                     <td><span t-field="o.ref"/></td>
+                </tr>
+<!-- </table> -->
+                <!-- <tr>
                     <div class="col-auto" t-if="o.invoice_date" name="invoice_date">
                         <t t-if="o.move_type == 'out_invoice'">
                             <td><span><strong>Tanggal Invoice</strong></span></td>
@@ -49,9 +65,9 @@
                        <td><span t-field="o.invoice_date_due"/></td>
                         
                     </div>
-                </tr>
+                </tr> -->
 
-                    <div class="col-auto" t-if="o.invoice_origin" name="origin">
+                    <!-- <div class="col-auto" t-if="o.invoice_origin" name="origin">
                        <td><strong>No. SO </strong></td> 
                        <td><span>:</span></td>
                         <td><span t-field="o.invoice_origin"/></td>
@@ -69,8 +85,8 @@
                         <td><span class="m-0" t-field="o.ref"/></td>
                     </div>
 
-                    </tr>
-            <!-- </table> -->
+                    </tr> -->
+            
                    <br/>
                 </div>
 
@@ -120,13 +136,12 @@
                                 <tr>
                                     <th name="th_no" class="text-start"><span>NO</span></th>
                                     <th name="th_description" class="text-start"><span>NAMA PRODUK</span></th>
-                                    <th name="th_quantity" class="text-end"><span>KENDARAAN</span></th>
-                                    <th name="th_quantity" class="text-end"><span>QTY</span></th>
-                                    <th name="th_priceunit" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Unit Price</span></th>
+                                    <th name="th_quantity" class="text-start"><span>KENDARAAN</span></th>
+                                    <th name="th_quantity" class="text-start"><span>QTY</span></th>
+                                    <th name="th_priceunit" t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Unit Price</span></th>
                                     <!-- <th name="th_price_unit" t-if="display_discount" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                         <span>Disc.%</span>
                                     </th> -->
-                                    <th name="th_taxes" t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Taxes</span></th>
                                     <th name="th_subtotal" class="text-end">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
@@ -145,21 +160,21 @@
                                         <t t-if="line.display_type == 'product'" name="account_invoice_line_accountable">
                                             <td><span t-esc="no"/> </td>
                                             <td name="account_invoice_line_name"><span t-field="line.name" t-options="{'widget': 'text'}"/></td>
-                                            <td class="text-end">
-                                                <span t-field="line.product_id.brand"/>
+                                            <td>
+                                                <span t-field="line.product_id.brand" t-options="{'widget': 'text'}"/>
                                                 <span t-field="line.product_uom_id"  groups="uom.group_uom"/>
                                             </td>
-                                            <td t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                            <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                 <span class="text-nowrap" t-field="line.quantity"/>
                                             </td>
                                             <td t-if="display_discount" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                 <span class="text-nowrap" t-field="line.price_unit"/>
                                             </td>
-                                            <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                                <!-- <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
+                                            <!-- <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> 
                                                 <span t-field="line.tax_ids"/>
 
-                                            </td>
+                                            </td> -->
                                              <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                 <span t-field="line.price_subtotal"/>
 
@@ -245,7 +260,10 @@
 
                     <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" class="mt-4">
                         <!-- Please use the following communication for your payment : <span t-field="o.payment_reference"/> -->
-                       <b> Pembayaran dapat ditransfer ke rekening BCA 0278808877 atas nama PT Gemilang Auto Perkasa</b>
+                        <b>Keterangan : </b><br/>
+                       <b> 1. Pembayaran dapat ditransfer ke rekening BCA 0278808877 atas nama PT Gemilang Auto Perkasa</b><br/>
+                        <b> 2. Retur pengembalian barang maksimal 7 hari dari tanggal nota</b>
+
                     </p>
                     <t t-set="payment_term_details" t-value="o.payment_term_details"/>
                     <div t-field="o.invoice_payment_term_id.note" name="payment_term"/>
