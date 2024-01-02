@@ -94,7 +94,7 @@
        
 </div> -->
 
-     <h6 style="color:black; text-align: right;">Dicetak :<b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
+     <h6 style="color:black; text-align: right;">Tanggal Dicetak : <b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
 
 
     | Page: <span class="page"/> / <span class="topage"/>

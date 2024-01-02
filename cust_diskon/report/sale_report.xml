@@ -53,15 +53,18 @@
      <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
 
        
+                <span style="font-size:25px; color:black; font-weight: bold; float:right;">Quotation</span>
 
         
         <div class="page" style="color:black;">
             <div class="oe_structure"/>
 
-            <h4 class="mt-4" style="font-size:18px; text-align: right; padding-bottom:17px;">
-                <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
-                <span t-elif="doc.state in ['draft','sent']">Quotation # </span>
-                <!-- <span t-else="">No.</span>
+            <h4 class="mt-4" style="font-size:25px; color:black; font-weight: bold; float:right;">
+                <!-- <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
+                <span t-elif="doc.state in ['draft','sent']">Sale Order </span>
+                <span t-if="doc.state in ['sale']">Quotation</span> -->
+
+                <!-- <span t-else="">Sa</span>
                 <span t-field="doc.name"/> -->
             </h4>
 
