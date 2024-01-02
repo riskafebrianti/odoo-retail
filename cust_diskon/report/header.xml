@@ -38,11 +38,11 @@
                            <span  t-esc="o.company_id.street"/>
                            <br></br></t>
                        <t t-if="o.company_id">
-                           <span t-esc="o.company_id.city"/> Telp. <span t-esc="o.company_id.phone"/> 
+                           <span t-esc="o.company_id.city"/> 
                            <br></br>
                        </t>
                        <t t-if="o.company_id">
-                          Whatsapp. <span t-esc="o.company_id.mobile"/>
+                          Whatsapp. <span t-esc="o.company_id.mobile"/> / Telp. <span t-esc="o.company_id.phone"/> 
                            <br></br>
                        </t>
                     
@@ -60,16 +60,16 @@
 <table style="border: 1px solid; width:100%;">
 <tr>
   <td colspan="5" style="height:115px; color:black;">   
-      <span style="float:left;">Administrasi,</span>    
+      <span style="float:left; margin-left:20px;">Administrasi,</span>    
       <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
   </td>
   <td colspan="5" style="height:115px; color:black;">   
-    <span style="float:left;">Penerima,</span>    
+    <span style="float:left;margin-left:20px;">Penerima,</span>    
     <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
   </td>
 
   <td colspan="2"  style="height:115px; color:black;">   
-    <span style="float:left;">Mengetahui,</span>    
+    <span style="float:left;margin-left:20px;">Mengetahui,</span>    
     <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
   </td>
 
@@ -94,7 +94,7 @@
        
 </div> -->
 
-     <h6 style="color:black; text-align: right;"><b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
+     <h6 style="color:black; text-align: right;">Dicetak :<b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
 
 
     | Page: <span class="page"/> / <span class="topage"/>

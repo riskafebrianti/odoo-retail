@@ -139,9 +139,9 @@
                                     <th name="th_quantity" class="text-start"><span>KENDARAAN</span></th>
                                     <th name="th_quantity" class="text-start"><span>QTY</span></th>
                                     <th name="th_priceunit" t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Unit Price</span></th>
-                                    <!-- <th name="th_price_unit" t-if="display_discount" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                    <th name="th_price_unit" t-if="display_discount" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                         <span>Disc.%</span>
-                                    </th> -->
+                                    </th>
                                     <th name="th_subtotal" class="text-end">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
@@ -167,22 +167,21 @@
                                             <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                 <span class="text-nowrap" t-field="line.quantity"/>
                                             </td>
-                                            <td t-if="display_discount" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                                <span class="text-nowrap" t-field="line.price_unit"/>
-                                            </td>
-                                            <!-- <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                                <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> 
-                                                <span t-field="line.tax_ids"/>
-
-                                            </td> -->
                                              <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                                <span t-field="line.price_subtotal"/>
+                                                <span t-field="line.price_unit"/>
 
                                             </td>
-                                            <td class="text-end o_price_total">
-                                                <span class="text-nowrap" t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
-                                                <span class="text-nowrap" t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                            <td t-if="display_discount" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                <span class="text-nowrap" t-field="line.discount"/>
                                             </td>
+                                             <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                <span t-field="line.discount"/>
+
+                                            </td>
+                                            <!-- <td class="text-end o_price_total">
+                                                <span class="text-nowrap" t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                                <span class="text-nowrap" t-field="line.price_unit" groups="account.group_show_line_subtotals_tax_included"/>
+                                            </td> -->
                                         </t>
                                         <t t-if="line.display_type == 'line_section'">
                                             <td colspan="99">
@@ -262,7 +261,7 @@
                         <!-- Please use the following communication for your payment : <span t-field="o.payment_reference"/> -->
                         <b>Keterangan : </b><br/>
                        <b> 1. Pembayaran dapat ditransfer ke rekening BCA 0278808877 atas nama PT Gemilang Auto Perkasa</b><br/>
-                        <b> 2. Retur pengembalian barang maksimal 7 hari dari tanggal nota</b>
+                        <b> 2. Retur atau penukaran barang pengembalian barang maksimal 7 hari dari tanggal nota</b>
 
                     </p>
                     <t t-set="payment_term_details" t-value="o.payment_term_details"/>
