@@ -31,7 +31,7 @@
         'views/saleorder.xml',
         'views/asset.xml',
         'views/barcode.xml',
-        'report/header.xml',
+        # 'report/header.xml',
         # 'report/report.xml',
         'report/sale_report.xml',
         'report/inv_report.xml',
