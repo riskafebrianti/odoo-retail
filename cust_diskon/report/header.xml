@@ -29,22 +29,22 @@
              <div class="float-left">
                <div class="details">
                
-                
+<!--                 
                        <b>
                            <span style="color:black; font-size:29px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span>
                        </b>
                          <br></br>
-                       <!-- <t t-if="o.company_id.street"> -->
-                           <!-- <span  t-esc="o.company_id.street"/> -->
+                       <t t-if="o.company_id.street">
+                           <span  t-esc="o.company_id.street"/>
                            <br></br></t>
-                       <!-- <t t-if="o.company_id"> -->
-                           <!-- <span t-esc="o.company_id.city"/>  -->
+                       <t t-if="o.company_id">
+                           <span t-esc="o.company_id.city"/> 
                            <br></br>
                        </t>
-                       <!-- <t t-if="o.company_id"> -->
-                          <!-- Whatsapp. <span t-esc="o.company_id.mobile"/> / Telp. <span t-esc="o.company_id.phone"/>  -->
+                       <t t-if="o.company_id">
+                          Whatsapp. <span t-esc="o.company_id.mobile"/> / Telp. <span t-esc="o.company_id.phone"/> 
                            <br></br>
-                       </t>
+                       </t> -->
                     
                </div>
              </div>
