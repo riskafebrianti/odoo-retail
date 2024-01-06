@@ -257,9 +257,9 @@
        
 
 
-                    <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" class="mt-4">
-                        <!-- Please use the following communication for your payment : <span t-field="o.payment_reference"/> -->
-                        <b>Keterangan : </b><br/>
+                    <!-- <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" class="mt-4">
+                        Please use the following communication for your payment : <span t-field="o.payment_reference"/>
+                    <b>Keterangan : </b><br/>
                     <ol>
                        <li>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa
                             <ul style="margin-right:13px;">
@@ -270,7 +270,7 @@
                     <br/>
                         <li>Retur atau penukaran barang maksimal 7 hari dari tanggal nota</li>
                     </ol>
-                    </p>
+                    </p> -->
                     <t t-set="payment_term_details" t-value="o.payment_term_details"/>
                     <div t-field="o.invoice_payment_term_id.note" name="payment_term"/>
                     <t t-if="o.invoice_payment_term_id.display_on_invoice and payment_term_details">

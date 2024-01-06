@@ -55,9 +55,40 @@
      <div style="padding-bottom:15px;"></div>
      </div>
 </xpath>
+
+<xpath expr="//t[@t-out='0']" position="after">
+
+ <b style="color:black; font-size:15px;"> Keterangan : </b><br/><br/>
+<ol style="color:black; font-size:15px;">
+      <li>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa :
+          <ul style="margin-right:11px;">
+              <li> BCA - 0278808877</li>
+              <li> Mandiri - 148-00225-32892 </li>
+          </ul>
+      </li>
+  <br/>
+      <li>Retur atau penukaran barang maksimal 7 hari dari tanggal nota</li>
+  </ol>
+</xpath>
+
 <xpath expr="//div[hasclass('text-center')]" position="replace">
 
+<!-- <div>
+  <b>Keterangan : </b><br/>
+  
+      Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa
+          
+               BCA - 0278808877
+               Mandiri - 148-00225-32892 
+          
+      
+  <br/>
+      Retur atau penukaran barang maksimal 7 hari dari tanggal nota
+  
+</div> -->
+
 <table style="border: 1px solid; width:100%;">
+ 
 <tr>
   <td colspan="5" style="height:115px; color:black;">   
       <span style="float:left; margin-left:20px;">Administrasi,</span>    
@@ -114,3 +145,8 @@
     </xpath>
      </template> -->
 </odoo>
+            <!-- <div class="row mt-4 mb-4" id="informations">
+                <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2" name="informations_reference">
+                    <strong>Your Reference:</strong>
+                    <p class="m-0" t-field="doc.client_order_ref"/>
+                </div> -->
