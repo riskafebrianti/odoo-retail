@@ -260,9 +260,16 @@
                     <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" class="mt-4">
                         <!-- Please use the following communication for your payment : <span t-field="o.payment_reference"/> -->
                         <b>Keterangan : </b><br/>
-                       <b> 1. Pembayaran dapat ditransfer ke rekening BCA 0278808877 atas nama PT Gemilang Auto Perkasa</b><br/>
-                        <b> 2. Retur atau penukaran barang maksimal 7 hari dari tanggal nota</b>
-
+                    <ol>
+                       <li>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa
+                            <ul style="margin-right:13px;">
+                                <li> BCA - 0278808877</li>
+                                <li> Mandiri - 148-00225-32892 </li>
+                            </ul>
+                        </li>
+                    <br/>
+                        <li>Retur atau penukaran barang maksimal 7 hari dari tanggal nota</li>
+                    </ol>
                     </p>
                     <t t-set="payment_term_details" t-value="o.payment_term_details"/>
                     <div t-field="o.invoice_payment_term_id.note" name="payment_term"/>

@@ -5,3 +5,4 @@ from . import diskon
 from . import barcode
 from . import penagihan
 from . import lot
+from . import testotal
