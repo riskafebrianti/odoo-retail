@@ -83,7 +83,7 @@
                             <div style="height: 136px !important; width: 165px !important;">
                                 <table class="table" t-att-style="'height: 100%; border: {};'.format('%dpx solid #777;' % label.wizard_id.border_width if label.wizard_id.border_width else '0')">
                                     <tr style="border: 0px solid;"> 
-                                        <td class="text-center" style="padding: 0; margin: 0; border: 0fffffffffffffffffffffffffffffffffffffpx solid;">
+                                        <td class="text-center" style="padding: 0; margin: 0; border: 0px solid;">
                                             <div style="width:100% !important; overflow: hidden; max-width: 100%; text-overflow: ellipsis; height: 64px !important; font-size: 11px; line-height: 0.6; margin-bottom: 2px; border: 0px solid black;">
                                                 <span t-field="label.product_id.name" style="line-height: 1.2;"/>
                                                 <span t-if="label.product_id.product_template_attribute_value_ids"
