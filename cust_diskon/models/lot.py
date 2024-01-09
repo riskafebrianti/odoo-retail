@@ -4,8 +4,20 @@ from odoo.exceptions import UserError
 from datetime import datetime
 
 
+# class StockPicking(models.Model):
+#     _inherit = 'stock.picking'
+#     invoiced = fields.Char(compute='_compute_invoiced', string='invoiced')
+    
+#     # @api.depends('picking_id')
+#     def _compute_invoiced(self):
+#         # for move in self:
+#         #     if move.picking_id:
+#                 print(self)
+    
 class StockMove(models.Model):
     _inherit = "stock.move"
+
+
     def action_show_details(self):
             """ Returns an action that will open a form view (in a popup) allowing to work on all the
             move lines of a particular move. This form view is used when "show operations" is not

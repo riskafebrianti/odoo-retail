@@ -57,8 +57,8 @@
                     </h2> -->
                     <div class="row mt32 mb32">
                         <div t-if="o.origin" class="col-auto" name="div_origin">
-                            <strong>Nomor PO:</strong>
-                            <p t-field="o.origin"/>
+                            <strong>Nomor Invoice:</strong>
+                            <p t-field="o.sale_id.invoice_ids.name"/>
                         </div>
                         <div t-if="o.state" class="col-auto" name="div_sched_date">
                             <strong>Shipping Date:</strong>
@@ -75,8 +75,8 @@
                             <tr>
                                 <th name="th_sm_product"><strong>Product</strong></th>
                                 <th name="th_sm_product"><strong>Part Number</strong></th>
-                                <th name="th_sm_ordered"><strong>Ordered</strong></th>
-                                <th name="th_sm_quantity"><strong>Delivered</strong></th>
+                                <th name="th_sm_ordered"><strong>Qty</strong></th>
+                                <!-- <th name="th_sm_quantity"><strong>Delivered</strong></th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -95,10 +95,10 @@
                                 <span t-field="move.product_uom_qty"/>
                                 <span t-field="move.product_uom"/>
                             </td>
-                            <td>
+                            <!-- <td>
                                 <span t-field="move.quantity_done"/>
                                 <span t-field="move.product_uom"/>
-                            </td>
+                            </td> -->
                         </tr>
                         </tbody>
                     </table>

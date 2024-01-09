@@ -27,9 +27,9 @@
                 </tr>
                 <br></br>
                 <tr>
-                     <td><strong>No. SO</strong></td>
-                     <span style="margin-left:60px;">:</span>
-                     <td><span t-field="o.invoice_origin"/></td>
+                     <td><strong>No. Surat Jalan</strong></td>
+                     <span>:</span>
+                     <td><span t-field="o.line_ids[0].sale_line_ids.order_id.picking_ids[0].name"/></td>
                 </tr><br></br>
                 <tr>
                      <td><strong>No. PO</strong></td>
