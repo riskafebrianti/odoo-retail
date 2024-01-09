@@ -56,21 +56,6 @@
      </div>
 </xpath>
 
-<xpath expr="//t[@t-out='0']" position="after">
-
- <b style="color:black; font-size:15px;"> Keterangan : </b><br/><br/>
-<ol style="color:black; font-size:15px;">
-      <li>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa :
-          <ul style="margin-right:11px;">
-              <li> BCA - 0278808877</li>
-              <li> Mandiri - 148-00225-32892 </li>
-          </ul>
-      </li>
-  <br/>
-      <li>Retur atau penukaran barang maksimal 7 hari dari tanggal nota</li>
-  </ol>
-</xpath>
-
 <xpath expr="//div[hasclass('text-center')]" position="replace">
 
 <!-- <div>

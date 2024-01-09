@@ -29,7 +29,7 @@
             <field name="price_unit"></field>
       </field> -->
     </record>
-<record id="view_order_form_inherit_new" model="ir.ui.view">
+<!-- <record id="view_order_form_inherit_new" model="ir.ui.view">
     <field name="name">sale.order.inherit.view.form</field>
     <field name="model">sale.order.line</field>
     <field name="inherit_id" ref="sale.view_order_line_tree"/>
@@ -38,9 +38,25 @@
             <field name="price_unit"></field>
         </field>
     </field>
-</record>
+</record> -->
 
 
     <menuitem name="History Penjualan" id="cust_diskon.menu_1_list" parent="sale.sale_order_menu"
             action="cust_diskon.action_window"/>
+
+    <record id="inherit_view_order_line_form" model="ir.ui.view">
+        <field name="name">sale.order.line.inherit.view.form</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_order_line_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='qty_delivered']" position="after">               
+                <field name="price_unit"></field>
+            </xpath>
+            <xpath expr="//field[@name='product_uom_qty']" position="replace">               
+                <field name="product_uom_qty" string="Qty" sum="sum qty"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

@@ -3,13 +3,15 @@
 
 <record id="view_sale_order_form_inherited" model="ir.ui.view">
     <field name="name">sale.order.form.inherited</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="model">sale.order.line</field>
+    <field name="inherit_id" ref="sale.view_order_line_tree"/>
     <field name="arch" type="xml">
-        <xpath expr="//group[@name='totals']" position="inside">
+        <xpath expr="//field[@name='product_uom_qty']" position="inside">
             <field name="total_amount"/>
         </xpath>
     </field>
 </record>
+
+
 
 </odoo>
