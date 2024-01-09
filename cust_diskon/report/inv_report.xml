@@ -17,7 +17,7 @@
                 <span style="color:black;" t-field="o.partner_id.name"/>
 
                 
-            <div style="float:right; width:30%;">
+            <div style="margin-left:65%; width:40%; ">
                 <!-- <table style="border:1px solid;"> -->
                 
                 <tr>
@@ -33,7 +33,7 @@
                 </tr><br></br>
                 <tr>
                      <td><strong>No. PO</strong></td>
-                     <span style="margin-left:60px;">:</span>
+                     <span style="margin-left:59px;">:</span>
                      <td><span t-field="o.ref"/></td>
                 </tr>
 <!-- </table> -->

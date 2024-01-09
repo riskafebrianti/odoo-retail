@@ -10,7 +10,7 @@ from num2words import num2words
 class cust_diskon2(models.Model):
     _inherit = 'res.partner'
     diskon = fields.Integer('Diskon')
-    kodevend = fields.Char(string='Kode Vendor', required=True)
+    kodevend = fields.Char(string='Kode Vendor')
     
 
 # class barcode(models.Model):
