@@ -59,7 +59,7 @@
                         <div t-if="o.origin" class="col-auto" name="div_origin">
                             <strong>Nomor Invoice:</strong>
                             <p t-field="o.sale_id.invoice_ids[0].name"/>
-                            <p t-field="o.sale_id.invoice_ids[1].name"/>
+                            <!-- <p t-field="o.sale_id.invoice_ids[1].name"/> -->
                         </div>
                         <div t-if="o.state" class="col-auto" name="div_sched_date">
                             <strong>Shipping Date:</strong>
