@@ -48,12 +48,14 @@
         
          <field name="categ_id" position="after">
                 <field name="kode_hrg"></field>
-                <!-- <field name="brand"></field> -->
+                <!-- <field name="barcode1"></field> -->
             </field>
         <field name="invoice_policy" position="after">                 
                 <field name="brand"></field>
+                
+
         </field>
-            
+      
      </field>   
     </record>
 
