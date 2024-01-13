@@ -116,9 +116,9 @@
                             <tr>
                                 <th name="th_sml_product"><strong>Product</strong></th>
                                 <t name="lot_serial" t-if="has_serial_number">
-                                    <th>
+                                    <!-- <th>
                                         Lot/Serial Number
-                                    </th>
+                                    </th> -->
                                 </t>
                                 <th name="th_sml_qty_ordered" class="text-center" t-if="not has_serial_number">
                                     <strong>Qty</strong>
@@ -289,7 +289,7 @@
         </xpath> -->
     </template>
 
-<!-- <template id="ds1" inherit_id="stock.stock_report_delivery_has_serial_move_line">
+<template id="ds1" inherit_id="stock.stock_report_delivery_has_serial_move_line">
     
         <xpath expr="//td[2]" position="replace">
            
@@ -308,7 +308,7 @@
 
  
 
-</template> -->
+</template>
 
 <template id="ds2" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
   
