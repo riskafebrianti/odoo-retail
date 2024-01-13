@@ -12,23 +12,21 @@ from odoo import models, fields, api
 class cust_diskon(models.Model):
     _inherit = 'product.template'
     # _description = 'cust_diskon.cust_diskon'
-    # barcode1 = fields.Char('barcode1',related='product_template_id.')
+#    barcode = fields.Char('barcode',compute='_compute_product_id')
     kode_hrg = fields.Char('Kode Harga')
     brand = fields.Char('Brand')
 
-
-
-# @api.depends('product_template_id')
-# def _compute_product_template_id(self):
-#     if self.product_template_id:
-#         self.barcode  = self.product_id.barcode
+    # @api.depends('product_template_id')
+    # def _compute_product_template_id(self):
+    #     if self.product_template_id:
+    #         self.barcode  = self.product_id.barcode
 
 
 class NamaModel(models.Model):
     _inherit = 'product.product'
     barcode = fields.Char('barcode',compute='_compute_product_id')
 
-    # @api.depends('id')
+    # @api.depends ("product_product_id")
     def _compute_product_id(self):
         # if self.barcode:
         self.barcode  = self.id
