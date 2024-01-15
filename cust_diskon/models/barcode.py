@@ -24,12 +24,19 @@ class cust_diskon(models.Model):
 
 class Product(models.Model):
     _inherit = 'product.product'
-    # barcode = fields.Char('barcode',compute='_compute_product_id')
+    # barcode = fields.Char('barcode',compute='_compute_product_id',store=True,)
 
     # @api.depends ("product_product_id")
-    def _compute_product_id(self):
-        # if self.barcode:
-        self.barcode  = self.id
+    # def _compute_product_id(self):
+    #     # if self.barcode:
+    #     self.barcode  = self.id
+
+    @api.model
+    def create(self,vals):
+        res = super(Product,self).create(vals)
+        res.barcode = res.id
+        print(vals)
+        return res
 
 
 

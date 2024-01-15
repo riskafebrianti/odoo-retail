@@ -44,8 +44,11 @@
                 <field name="kode_hrg"></field>
 
             </field> -->
-            
+        <field name='barcode' position="attributes">
+               <attribute name="attrs">{'readonly': 1}</attribute>
+        </field>
         
+
          <field name="categ_id" position="after">
                 <field name="kode_hrg"></field>
                 <!-- <field name="barcode1"></field> -->
