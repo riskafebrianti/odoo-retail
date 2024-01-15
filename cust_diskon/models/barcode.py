@@ -22,9 +22,9 @@ class cust_diskon(models.Model):
     #         self.barcode  = self.product_id.barcode
 
 
-class NamaModel(models.Model):
+class Product(models.Model):
     _inherit = 'product.product'
-    barcode = fields.Char('barcode',compute='_compute_product_id')
+    # barcode = fields.Char('barcode',compute='_compute_product_id')
 
     # @api.depends ("product_product_id")
     def _compute_product_id(self):
