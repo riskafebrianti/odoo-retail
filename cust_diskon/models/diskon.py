@@ -11,7 +11,37 @@ class cust_diskon2(models.Model):
     _inherit = 'res.partner'
     diskon = fields.Integer('Diskon')
     kodevend = fields.Char(string='Kode Vendor')
-    
+
+    def number_to_words(self, amount, currency):
+
+        if currency.name == 'IDR':
+            number2words = num2words(amount, lang='id')
+            check_number2words = number2words.replace(' koma nol', '')
+            amount_to_words = check_number2words.title()+' Rupiah'
+        else:
+            amount_decimal_check = amount - int(amount)
+
+            if amount_decimal_check == 0.00:
+                number2words = num2words(amount, lang='en').title()
+            else:
+                amount_decimal = '%.2f' % amount
+                
+                x = amount_decimal.rfind('.')
+                amount_before_comma = amount_decimal[:x]
+                amount_after_comma = amount_decimal[x+1:]
+
+                number2words1 = num2words(int(amount_before_comma), lang='en').title()
+                number2words2 = num2words(int(amount_after_comma), lang='en').title()
+
+                number2words = number2words1+' Point '+number2words2
+
+            if currency.name == 'USD':
+                amount_to_words = 'United State Dollar '+number2words
+            else:
+                amount_to_words = currency.name+' '+number2words
+
+        return amount_to_words
+
 
 # class barcode(models.Model):
 #     _inherit = 'res.partner'
@@ -20,6 +50,41 @@ class cust_diskon2(models.Model):
 
 #--ini buat di order line nambahin dsc
 
+
+class report(models.Model):
+    _inherit = 'account.move'
+
+    def number_to_words(self, amount, currency):
+
+        if currency.name == 'IDR':
+            number2words = num2words(amount, lang='id')
+            check_number2words = number2words.replace(' koma nol', '')
+            amount_to_words = check_number2words.title()+' Rupiah'
+        else:
+            amount_decimal_check = amount - int(amount)
+
+            if amount_decimal_check == 0.00:
+                number2words = num2words(amount, lang='en').title()
+            else:
+                amount_decimal = '%.2f' % amount
+                
+                x = amount_decimal.rfind('.')
+                amount_before_comma = amount_decimal[:x]
+                amount_after_comma = amount_decimal[x+1:]
+
+                number2words1 = num2words(int(amount_before_comma), lang='en').title()
+                number2words2 = num2words(int(amount_after_comma), lang='en').title()
+
+                number2words = number2words1+' Point '+number2words2
+
+            if currency.name == 'USD':
+                amount_to_words = 'United State Dollar '+number2words
+            else:
+                amount_to_words = currency.name+' '+number2words
+
+        return amount_to_words
+
+    
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     # _description = 'cust_diskon.cust_diskon'

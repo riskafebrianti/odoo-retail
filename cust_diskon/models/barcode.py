@@ -44,6 +44,8 @@ class Product(models.Model):
 
 
 
+
+
     # @api.depends ("product_tmpl_id")
     # def _compute_product_tmpl_id(self):
     #     if self.product_template_id:
