@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_tagihan">
+
+
+
+    <t t-call="web.html_container">
+        <div t-attf-class="o_company_#{company_id}_layout header" t-att-style="report_header_style">
+                    <!-- <div t-att-style="report_header_style"> -->
+            <div class="o_background_header" style="position:absolute; color:black;">
+                    <!-- <div class="float-right">
+                            <h3 class="mt0 text-right" t-field="company.report_header"/>
+                    </div>
+                        <div class="header_content float-right">
+                            <div class="logo" style="">
+                        <img t-if="company.logo" style="max-width:260px;max-height:89px;"
+                                    t-att-src="image_data_uri(company.logo)"
+                                    class="float-left" alt="Logo"/>
+                        </div> 
+                        </div>-->
+            </div> 
+             <div class="float-left">
+               <div class="details">            
+                    <b><span style="color:black; font-size:29px;">  PT. <t t-esc="docs.invoice_list[0].company_id.name"/></span></b>
+                        <br></br>
+                    <t t-if="docs.invoice_list[0].company_id.street">
+                        <span  t-esc="docs.invoice_list[0].company_id.street"/>
+                    </t>
+                        <br></br>
+                    <t t-if="docs.invoice_list[0].company_id">
+                        <span t-esc="docs.invoice_list[0].company_id.city"/> 
+                    </t>   
+                        <br></br>
+                    <t t-if="docs.invoice_list[0].company_id">
+                        Whatsapp. <span t-esc="docs.invoice_list[0].company_id.mobile"/> / Telp. <span t-esc="docs.invoice_list[0].company_id.phone"/> 
+                    </t>   
+                        <br></br>  
+               </div>
+             </div>     
+                   
+            <div style="line-height: 3.1em; border-bottom-style: double; border: 1px solid black;"></div>
+
+    
+</div>
+        <!-- <div style="width:20%; border:1px solid black; font-size:19px;  float:right;">
+        
+                <br/>  <br/><br/>  <br/><br/>  <br/> <br/>
+            <tr>
+                <td><span t-esc="docs.invoice_list[0].company_id.city"/>,</td>
+                <td></td>
+                <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></td>
+            </tr>      
+       </div> -->
+     <div style="padding-bottom:15px;"></div>
+    
+  
+    <!-- <div style="width:25%; border:1px solid black; font-size:19px; marfin-top:50px; float:left;">    
+        <span style="font-size:28px; color:black;"> Tanda Terima</span><br/>
+        <span style="font-size:19px;"> Kepada : <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </span><br/><br/>
+        <span style="font-size:23px;"> Periode <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/> </span>
+    </div> -->
+
+      <t t-foreach="docs" t-as="x">
+        <div class="pages" style="width: 95%; border: 0px solid; height: 75%; margin-top:12%;">
+        <!-- <div class="page"> -->
+           
+            <div style="border:0px solid black; font-size:19px; float:right;">
+                
+                    <tr>
+                        <td><span t-esc="docs.invoice_list[0].company_id.city"/>,</td>
+                        <td></td>
+                        <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></td>
+                    </tr>      
+            </div>
+
+            <div style="border:0px solid black; font-size:19px; margin-top:50px; float:left;">    
+                <span style="font-family:Calibri; font-size:28px; color:black; font-weight: bold;"> Tanda Terima</span><br/>
+                <span style="font-size:19px;"> Kepada : <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </span><br/><br/>
+                <span style="font-size:23px;"> Periode <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/> </span>
+            </div>
+           
+             <table style="width:100%; border-collapse: collapse; border: 1px solid;">
+
+        <tr>
+            <td style="border: 1px solid;  font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:2%;">No</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:17%;">Nomor Invoice</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Nomor PO</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:8%;">Tanggal Invoice</td>
+            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Jumlah</td>
+            
+            
+            
+        </tr>
+                            
+            <t t-set="no" t-value="1"/>
+            <t t-foreach="x.invoice_list" t-as="inv">
+                <tr>
+                    <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
+                    <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.name"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.ref"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.invoice_date"/> </td>
+                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;">Rp.<span t-esc="'{0:,.2f}'.format(int(inv.amount_untaxed_signed))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/> </td>
+                    
+                
+               
+                <t t-set="no" t-value="no + 1"/>
+                </tr> 
+
+            </t>
+         <tr>
+                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="4">Total</td>
+                  <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="6" widget="monetary"><span t-esc="docs.total_overdue"/></td> -->
+                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="5">Rp <span t-esc="'{0:,.2f}'.format(int(x.total_overdue))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td>
+
+        </tr>
+                        
+    </table>
+    </div>
+</t>
+
+
+
+<xpath expr="//div[hasclass('text-center')]" position="replace">
+
+
+<table style="border: 1px solid; border-collapse: collapse; width:100%; margin-top:90px;">
+ 
+<tr>
+    <td style="border: 1px solid;height:115px; color:black;">   
+    <span style="float:left;margin-left:15px; margin-bottom:60px;">Administrasi,</span>    
+    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+  </td>
+  <td style="border: 1px solid; height:115px; color:black;">   
+    <span style="float:left;margin-left:15px; margin-bottom:60px;">Penerima,</span>    
+    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+  </td>
+
+  <td style="border: 1px solid; height:115px; color:black;">   
+    <span style="float:left;margin-left:15px; margin-bottom:60px;">Mengetahui,</span>    
+    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+  </td>
+
+
+</tr>
+</table>
+
+
+
+     <!-- <h6 style="color:black; font-size:16px; text-align: right;">Tanggal Dicetak : <b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
+
+
+    | Page: <span class="page"/> / <span class="topage"/> 
+ </b></h6>-->
+</xpath>
+ 
+ </t>
+    </template>
+</odoo>
+
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_tagihan">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="80"/>
+            <t t-call="web.internal_layout">
+
+
+
+            
+                <div class="page">
+                    <h2>Follow-up Reports  <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </h2>
+                  
+                    <br></br><br></br>
+                    <div class="row">
+                       
+                        <div>
+                          <table class="table table-sm"  name="stock_move_table">
+                        <thead>
+                            <tr>
+                                <th name="no"><strong>No</strong></th>
+                                <th name="th_sm_product"><strong>Number</strong></th>
+                                <th name="due"><strong>Due Date</strong></th>
+                                <th name="Total_crc"><strong>Reference</strong></th>
+                                <th name="Tax_Exclude"><strong>Tax Excluded</strong></th>
+                                <th name="Total"><strong>Total</strong></th>
+                                <th name="payment_state"><strong>Payment State</strong></th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                            
+                                <t t-set="no" t-value="1"/>
+                                <t t-foreach="o.invoice_list" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="no"/> </td>
+                                        <td><span t-field="inv.name"/> </td>
+                                        <td><span t-field="inv.invoice_date_due"/> </td>
+                                        <td><span t-field="inv.ref"/> </td>
+                                        <td><span t-field="inv.amount_untaxed_signed"/> </td>
+                                        <td><span t-field="inv.amount_total_signed"/> </td>
+                                        <td><span t-field="inv.payment_state"/> </td>
+                                    </tr>
+                                    <t t-set="no" t-value="no + 1"/>
+                                </t>
+                          
+
+                            </t>
+                        </tbody>
+                       
+                    </table>
+                        </div> 
+                    </div>
+                    
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo> -->
+
+
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_tagihan">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="80"/>
+            <t t-call="web.internal_layout">
+
+
+
+            
+                <div class="page">
+                    <h2>Follow-up Reports  <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </h2>
+                  
+                    <br></br><br></br>
+                    <div class="row">
+                       
+                        <div>
+                          <table class="table table-sm"  name="stock_move_table">
+                        <thead>
+                            <tr>
+                                <th name="no"><strong>No</strong></th>
+                                <th name="th_sm_product"><strong>Number</strong></th>
+                                <th name="due"><strong>Due Date</strong></th>
+                                <th name="Total_crc"><strong>Reference</strong></th>
+                                <th name="Tax_Exclude"><strong>Tax Excluded</strong></th>
+                                <th name="Total"><strong>Total</strong></th>
+                                <th name="payment_state"><strong>Payment State</strong></th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                            
+                                <t t-set="no" t-value="1"/>
+                                <t t-foreach="o.invoice_list" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="no"/> </td>
+                                        <td><span t-field="inv.name"/> </td>
+                                        <td><span t-field="inv.invoice_date_due"/> </td>
+                                        <td><span t-field="inv.ref"/> </td>
+                                        <td><span t-field="inv.amount_untaxed_signed"/> </td>
+                                        <td><span t-field="inv.amount_total_signed"/> </td>
+                                        <td><span t-field="inv.payment_state"/> </td>
+                                    </tr>
+                                    <t t-set="no" t-value="no + 1"/>
+                                </t>
+                          
+
+                            </t>
+                        </tbody>
+                       
+                    </table>
+                        </div> 
+                    </div>
+                    
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo> -->

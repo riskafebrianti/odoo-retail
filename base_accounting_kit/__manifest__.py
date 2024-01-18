@@ -101,7 +101,7 @@
         'report/account_day_book_view.xml',
         'report/account_asset_report_views.xml',
         'report/report.xml',
-        'report/report_tagihan.xml',
+        # 'report/report_tagihan.xml',
         'report/multiple_invoice_layouts.xml',
         'report/multiple_invoice_report.xml',
         'views/recurring_payments_view.xml',

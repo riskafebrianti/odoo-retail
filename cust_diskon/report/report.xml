@@ -35,7 +35,7 @@
 
     
     <!-- Start Data Print sales order -->
-    <record id="action_inv_report" model="ir.actions.report">
+    <!-- <record id="action_inv_report" model="ir.actions.report">
         <field name="name">Jurnal Memorial</field>
         <field name="model">account.move</field>
         <field name="report_type">qweb-html</field>
@@ -44,21 +44,29 @@
         <field name="print_report_name">'Jurnal'</field>
         <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/>
         <field name="binding_model_id" ref="account.move.model_account_move"/>
-    </record>
-
-
-
-  <!--  <record id="action_purchase_report" model="ir.actions.report">
-        <field name="name">purchase report</field>
-        <field name="model">purchase.order</field>
-        <field name="report_type">qweb-html</field>
-        <field name="report_name">cust_diskon.report_purchase</field>
-        <field name="report_file">cust_diskon.report_purchase</field>
-        <field name="print_report_name">'purchase_order'</field>
-        <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/>
-        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
-        <field name="binding_type">report</field>
     </record> -->
 
 
+    <!-- <record id="action_report_tagihan" model="ir.actions.report">
+        <field name="name">Follow-up Report</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cust_diskon.report_tagihan</field>
+        <field name="report_file">cust_diskon.report_tagihan</field>
+        <field name="print_report_name">'Follow-up Report'</field>
+        <field name="binding_model_id" ref="model_res_partner"/>
+    </record>  -->
+   <record id="action_report_tagihan" model="ir.actions.report">
+        <field name="name">Follow-up Report</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cust_diskon.report_tagihan</field>
+        <field name="report_file">cust_diskon.report_tagihan</field>
+        <field name="print_report_name">'Follow-up Report'</field>
+        <!-- <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/> -->
+        <!-- <field name="binding_model_id" ref="purchase.model_res_partner"/> -->
+        <field name="binding_type">report</field>
+    </record>
+
+    
 </odoo>
