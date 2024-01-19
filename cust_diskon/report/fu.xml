@@ -53,48 +53,48 @@
     </div> -->
 
       <t t-foreach="docs" t-as="x">
-        <div class="pages" style="width: 95%; border: 0px solid; height: 75%; margin-left:25px; margin-top:-9px; ">
-        <!-- <div class="page"> -->
+        <div class="pages" style="width: 95%; border: 1px solid; height: 50%; margin-left:25px; margin-top:-9px; ">
+             <!-- <div class="page"> -->
            
-            <div style="border:0px solid black; font-size:16px; float:right;">
-                
-                    <tr>
-                        <td><span t-esc="docs.invoice_list[0].company_id.city"/>,</td>
-                        <td></td>
-                        <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></td>
-                    </tr>      
-            </div>
-
-            <div style="border:0px solid black; font-size:19px; margin-top:50px; float:left;">    
-                <span style="font-family:Calibri; font-size:28px; color:black; font-weight: bold;"> Tanda Terima</span><br/>
-                <span style="font-size:19px;"> Kepada : <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </span><br/><br/>
-                <span style="font-size:23px;"> Periode <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/> </span>
-            </div>
-           
-             <table style="width:100%; border-collapse: collapse; border: 1px solid;">
-
-        <tr>
-            <td style="border: 1px solid;  font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:2%;">No</td>
-            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:17%;">Nomor Invoice</td>
-            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Nomor PO</td>
-            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:8%;">Tanggal Invoice</td>
-            <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Jumlah</td>
-            
-            
-            
-        </tr>
-                            
-            <t t-set="no" t-value="1"/>
-            <t t-foreach="x.invoice_list" t-as="inv">
-                <tr>
-                    <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
-                    <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
-                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.name"/> </td>
-                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.ref"/> </td>
-                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.invoice_date"/> </td>
-                    <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;">Rp.<span t-esc="'{0:,.2f}'.format(int(inv.amount_untaxed_signed))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/> </td>
+                <div style="border:0px solid black; font-size:16px; float:right;">
                     
-                
+                        <tr>
+                            <td><span t-esc="docs.invoice_list[0].company_id.city"/>,</td>
+                            <td></td>
+                            <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></td>
+                        </tr>      
+                </div>
+
+                <div style="border:0px solid black; font-size:19px; margin-top:50px; float:left;">    
+                    <span style="font-family:Calibri; font-size:28px; color:black; font-weight: bold;"> Tanda Terima</span><br/>
+                    <span style="font-size:19px;"> Kepada : <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </span><br/><br/>
+                    <span style="font-size:23px;"> Periode <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/> </span>
+                </div>
+           
+             <table style="width:100%; border-collapse: collapse; border: 1px solid; height:50%;">
+
+                    <tr>
+                        <td style="border: 1px solid;  font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:2%;">No</td>
+                        <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:17%;">Nomor Invoice</td>
+                        <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:13%;">Nomor PO</td>
+                        <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:8%;">Tanggal Invoice</td>
+                        <td style="border: 1px solid; font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:5%;">Jumlah</td>
+                        
+                        
+                        
+                    </tr>
+                            
+                <t t-set="no" t-value="1"/>
+                <t t-foreach="x.invoice_list" t-as="inv">
+                    <tr>
+                        <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
+                        <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
+                        <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.name"/> </td>
+                        <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.ref"/> </td>
+                        <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.invoice_date"/> </td>
+                        <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;">Rp.<span t-esc="'{0:,.2f}'.format(int(inv.amount_untaxed_signed))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/> </td>
+                        
+                    
                
                 <t t-set="no" t-value="no + 1"/>
                 </tr> 
