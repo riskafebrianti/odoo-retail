@@ -65,7 +65,7 @@
         <div class="pages" style="width: 95%; border: 0px solid; height: 75%; margin-top:12%;">
         <!-- <div class="page"> -->
            
-            <div style="border:0px solid black; font-size:19px; float:right;">
+            <div style="border:0px solid black; font-size:14px; float:right;">
                 
                     <tr>
                         <td><span t-esc="docs.invoice_list[0].company_id.city"/>,</td>
@@ -143,30 +143,29 @@
 
 
 
-<xpath expr="//div[hasclass('text-center')]" position="replace">
+
+<div class="footer">
+    <table style="border: 1px solid; border-collapse: collapse; width:100%; margin-top:90px;">
+    
+        <tr>
+            <td style="border: 1px solid;height:80px; color:black;">   
+            <span style="float:left;margin-left:15px; margin-bottom:60px;">Administrasi,</span>    
+            <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+        </td>
+        <td style="border: 1px solid; height:80px; color:black;">   
+            <span style="float:left;margin-left:15px; margin-bottom:60px;">Penerima,</span>    
+            <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+        </td>
+
+        <td style="border: 1px solid; height:80px; color:black;">   
+            <span style="float:left;margin-left:15px; margin-bottom:60px;">Mengetahui,</span>    
+            <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+        </td>
 
 
-<table style="border: 1px solid; border-collapse: collapse; width:100%; margin-top:90px;">
- 
-<tr>
-    <td style="border: 1px solid;height:115px; color:black;">   
-    <span style="float:left;margin-left:15px; margin-bottom:60px;">Administrasi,</span>    
-    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
-  </td>
-  <td style="border: 1px solid; height:115px; color:black;">   
-    <span style="float:left;margin-left:15px; margin-bottom:60px;">Penerima,</span>    
-    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
-  </td>
-
-  <td style="border: 1px solid; height:115px; color:black;">   
-    <span style="float:left;margin-left:15px; margin-bottom:60px;">Mengetahui,</span>    
-    <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
-  </td>
-
-
-</tr>
-</table>
-
+        </tr>
+    </table>
+</div>
 
 
      <!-- <h6 style="color:black; font-size:16px; text-align: right;">Tanggal Dicetak : <b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
@@ -174,7 +173,7 @@
 
     | Page: <span class="page"/> / <span class="topage"/> 
  </b></h6>-->
-</xpath>
+
  
  </t>
     </template>
