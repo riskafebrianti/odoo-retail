@@ -6,13 +6,13 @@
 
 
     <t t-call="web.html_container">
-        <!-- <div t-attf-class="o_company_#{company_id}_layout header" t-att-style="report_header_style">
+        <div t-attf-class="o_company_#{company_id}_layout header" t-att-style="report_header_style" >
                     
-            <div class="o_background_header" style="position:absolute; color:black;">
+            <!-- <div class="o_background_header" style="position:absolute; color:black;border: 1px solid black;">
            
-            </div> 
+            </div>  -->
              <div class="float-left">
-               <div class="details">            
+               <div class="details">
                     <b><span style="color:black; font-size:29px;">  PT. <t t-esc="docs.invoice_list[0].company_id.name"/></span></b>
                         <br></br>
                     <t t-if="docs.invoice_list[0].company_id.street">
@@ -33,7 +33,7 @@
             <div style="line-height: 3.1em; border-bottom-style: double; border: 1px solid black;"></div>
 
     
-</div> -->
+</div>
         <!-- <div style="width:20%; border:1px solid black; font-size:19px;  float:right;">
         
                 <br/>  <br/><br/>  <br/><br/>  <br/> <br/>
@@ -43,7 +43,7 @@
                 <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/></td>
             </tr>      
        </div> -->
-     <div style="padding-bottom:15px;"></div>
+     
     
   
     <!-- <div style="width:25%; border:1px solid black; font-size:19px; marfin-top:50px; float:left;">    
@@ -53,10 +53,10 @@
     </div> -->
 
       <t t-foreach="docs" t-as="x">
-        <div class="pages" style="width: 95%; border: 0px solid; height: 75%; margin-top:12%;">
+        <div class="pages" style="width: 95%; border: 0px solid; height: 75%; margin-left:25px; margin-top:-12px; ">
         <!-- <div class="page"> -->
            
-            <div style="border:0px solid black; font-size:14px; float:right;">
+            <div style="border:0px solid black; font-size:16px; float:right;">
                 
                     <tr>
                         <td><span t-esc="docs.invoice_list[0].company_id.city"/>,</td>
