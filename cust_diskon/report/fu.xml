@@ -6,19 +6,10 @@
 
 
     <t t-call="web.html_container">
-        <div t-attf-class="o_company_#{company_id}_layout header" t-att-style="report_header_style">
-                    <!-- <div t-att-style="report_header_style"> -->
+        <!-- <div t-attf-class="o_company_#{company_id}_layout header" t-att-style="report_header_style">
+                    
             <div class="o_background_header" style="position:absolute; color:black;">
-                    <!-- <div class="float-right">
-                            <h3 class="mt0 text-right" t-field="company.report_header"/>
-                    </div>
-                        <div class="header_content float-right">
-                            <div class="logo" style="">
-                        <img t-if="company.logo" style="max-width:260px;max-height:89px;"
-                                    t-att-src="image_data_uri(company.logo)"
-                                    class="float-left" alt="Logo"/>
-                        </div> 
-                        </div>-->
+           
             </div> 
              <div class="float-left">
                <div class="details">            
@@ -42,7 +33,7 @@
             <div style="line-height: 3.1em; border-bottom-style: double; border: 1px solid black;"></div>
 
     
-</div>
+</div> -->
         <!-- <div style="width:20%; border:1px solid black; font-size:19px;  float:right;">
         
                 <br/>  <br/><br/>  <br/><br/>  <br/> <br/>
