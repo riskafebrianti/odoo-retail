@@ -107,7 +107,7 @@
       <tr>
                 <td colspan="4" style="border: 0px solid; font-size:14px; mrgin-left:12px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" >Total</td>
                   <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="6" widget="monetary"><span t-esc="docs.total_overdue"/></td> -->
-                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;"> Rp <span t-esc="'{0:,.2f}'.format(int(x.total_overdue))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td>
+                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding-right:12px; width:5%; font-weight: bold;"> Rp <span t-esc="'{0:,.2f}'.format(int(x.total_overdue))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td>
                 <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="5">Rp </td> -->
                  <!-- <p style="margin-left:0px;display:block; font-style: italic;" t-esc="x.number_to_words(x.amount_total_deductable,x.currency_id)"/></i></td> -->
 
@@ -116,10 +116,10 @@
 <br/>
      <div style="line-height: 0.1em; border: 1px solid grey; "></div>
             
-            <span style="border: 0px solid; font-size:14px; text-align: center; color:black; padding:0px; width:5%;" >Terbilang : <span t-esc="x.number_to_words(x.total_overdue,x.currency_id)" /></span>
+            <span style="border: 0px solid; font-family:Calibri; font-size:16px; text-align: center; color:black;; width:100%;" >Terbilang : <span t-esc="x.number_to_words(x.total_overdue,x.currency_id)"/></span>
 <br/>
 <br/>
-            <b style="color:black; font-size:18px;"> Keterangan : </b><br/><br/>
+            <b style="color:black; font-size:18px;"> Keterangan : </b>
             <ol style="color:black; font-size:15px;">
                 <li>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa :
                     <ul>

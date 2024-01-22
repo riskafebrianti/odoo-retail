@@ -56,17 +56,17 @@
         <field name="print_report_name">'Follow-up Report'</field>
         <field name="binding_model_id" ref="model_res_partner"/>
     </record>  -->
-   <record id="action_report_tagihan" model="ir.actions.report">
+   <!-- <record id="action_report_tagihan" model="ir.actions.report">
         <field name="name">Follow-up Report</field>
         <field name="model">res.partner</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">cust_diskon.report_tagihan</field>
         <field name="report_file">cust_diskon.report_tagihan</field>
         <field name="print_report_name">'Follow-up Report'</field>
-        <!-- <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/> -->
-        <!-- <field name="binding_model_id" ref="purchase.model_res_partner"/> -->
+        <field name="paperformat_id" ref="cust_diskon.paperformat_custom"/>
+        <field name="binding_model_id" ref="purchase.model_res_partner"/>
         <field name="binding_type">report</field>
-    </record>
+    </record> -->
 
     
 </odoo>
