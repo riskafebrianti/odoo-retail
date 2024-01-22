@@ -68,10 +68,10 @@
                 <div style="border:0px solid black; font-size:19px; margin-top:50px; float:left;">    
                     <span style="font-family:Calibri; font-size:28px; color:black; font-weight: bold;"> Tanda Terima</span><br/>
                     <span style="font-size:19px;"> Kepada : <span t-esc="docs.invoice_list[0].invoice_partner_display_name"/> </span><br/><br/>
-                    <span style="font-size:23px;"> Periode <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/> </span>
+                    <span style="font-size:23px;"> Periode <span t-esc="docs.periode"/> </span>
                 </div>
            
-             <table style="width:100%; border-collapse: collapse; border: 1px solid; height:50%;">
+             <table style="width:100%; border-collapse: collapse; border: 1px solid; ">
 
                     <tr>
                         <td style="border: 1px solid;  font-size:19px; font-weight: bold; text-align: center; color:black; padding:5px; width:2%;">No</td>
@@ -120,21 +120,20 @@
 <br/>
 <br/>
             <b style="color:black; font-size:18px;"> Keterangan : </b>
-            <ol style="color:black; font-size:15px;">
-                <li>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa :
-                    <ul>
+            <!-- <ol style="color:black; font-size:15px;"> -->
+                <p style="color:black; font-size:15px;"/>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa :
+                    <!-- <ul> -->
                         <li> 
                                 <span> BCA </span> 
-                                <span style="margin-left:27px;"> - 0278808877</span>                         
+                                <span style="margin-left:19px;"> - 0278808877</span>                         
                         </li>
                         <li>    <span>Mandiri  </span>
-                                <span style="margin-left:4px;">- 148-00225-32892</span>
+                                <span style="margin-left:5px;"> - 148-00225-32892</span>
                         </li>
-                    </ul>
-                </li>
+                    <!-- </ul> -->
+                <!-- </> -->
             <br/>
-                <li>Retur atau penukaran barang maksimal 7 hari dari tanggal nota</li>
-            </ol>
+            <!-- </ol> -->
     </div>
 </t>
 

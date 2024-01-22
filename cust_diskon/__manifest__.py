@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','web','contacts','sale','sale_management','product','purchase','account'],
+    'depends': ['base','web','contacts','sale','sale_management','product','purchase','account','base_accounting_kit'],
 
     # always loaded
     'data': [
@@ -31,7 +31,7 @@
         'views/saleorder.xml',
         'views/asset.xml',
         'views/barcode.xml',
-        # 'views/stockmove.xml',
+        'views/tagihan.xml',
         'report/header.xml',
         'report/report.xml',
         'report/sale_report.xml',
