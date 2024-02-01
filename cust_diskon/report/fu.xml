@@ -92,7 +92,7 @@
                         <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.name"/> </td>
                         <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.ref"/> </td>
                         <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;"><span t-field="inv.invoice_date"/> </td>
-                        <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;">Rp.<span t-esc="'{0:,.2f}'.format(int(inv.amount_untaxed_signed))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/> </td>
+                        <td style="border: 1px solid; font-size:13px; text-align: left; color:black; padding:5px;">Rp.<span t-esc="'{0:,.2f}'.format(int(inv.amount_total_signed))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/> </td>
                         
                     
                
