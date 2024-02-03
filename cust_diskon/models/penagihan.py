@@ -13,5 +13,8 @@ class Custdiskon(models.Model):
                                     domain=(
                                     [('payment_state', '=', 'not_paid'),
                                         ('move_type', '=', 'out_invoice'),
+                                        ('move_type', '=', 'out_invoice'),
                                         ('state','=','posted')]))
     periode = fields.Char(string='Periode')
+    
+

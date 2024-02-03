@@ -85,7 +85,9 @@
                     </tr>
                             
                 <t t-set="no" t-value="1"/>
-                <t t-foreach="x.invoice_list" t-as="inv">
+                <!-- <t t-foreach="x.invoice_list" t-as="inv"> -->
+                <t t-foreach="x.invoice_list.filtered(lambda r: r.to_check == True)" t-as="inv">
+
                     <tr>
                         <td style="border: 1px solid; font-size:13px;text-align: center; color:black; padding:5px;"><span t-esc="no"/> </td>
                         <!-- <td><span t-esc="inv.invoice_partner_display_name"/> </td> -->
@@ -104,10 +106,13 @@
                         
     </table>
              <table style="float:right; width:50%;  border: 0px solid;">
+             
       <tr>
                 <td colspan="4" style="border: 0px solid; font-size:14px; mrgin-left:12px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" >Total</td>
                   <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="6" widget="monetary"><span t-esc="docs.total_overdue"/></td> -->
-                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding-right:12px; width:5%; font-weight: bold;"> Rp <span t-esc="'{0:,.2f}'.format(int(x.total_overdue))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td>
+                <!-- <td><span t-esc="sum(inv.amount_total_signed)"/></td> -->
+                <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding-right:12px; width:5%; font-weight: bold;">Rp <span t-esc="'{0:,.2f}'.format(int(sum(record.amount_total_signed for record in x.invoice_list.filtered(lambda r: r.to_check == True))))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td>
+                <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding-right:12px; width:5%; font-weight: bold;"> Rp <span t-esc="'{0:,.2f}'.format(int(x.total_overdue))" t-field-options='{"widget": "monetary", "display_currency": x.currency_id}'/></td> -->
                 <!-- <td style="border: 0px solid; font-size:14px; text-align: right; color:black; padding:0px; width:5%; font-weight: bold;" colspan="5">Rp </td> -->
                  <!-- <p style="margin-left:0px;display:block; font-style: italic;" t-esc="x.number_to_words(x.amount_total_deductable,x.currency_id)"/></i></td> -->
 

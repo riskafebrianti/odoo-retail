@@ -8,9 +8,23 @@
             <field name="arch" type="xml">
                 <field name="next_reminder_date" position="after">
                     <field name="periode"></field>
+                    
+
                 </field>
+               
             </field>
         </record>
+
+        <!-- <record id="inherit_view_centang_fu_form" model="ir.ui.view">
+            <field name="name">account.move</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_out_invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="to_check"></field>
+                </field>
+            </field>
+        </record> -->
         
     </odoo>
 

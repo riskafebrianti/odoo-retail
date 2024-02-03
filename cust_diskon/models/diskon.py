@@ -54,6 +54,15 @@ class cust_diskon2(models.Model):
 class report(models.Model):
     _inherit = 'account.move'
 
+    # hide_post_button = fields.Boolean(compute='_compute_hide_post_button', readonly=True)
+    to_check = fields.Boolean(
+    string='To Check',
+    default=True,
+    tracking=True,
+    help="testitng",
+)
+
+
     def number_to_words(self, amount, currency):
 
         if currency.name == 'IDR':
@@ -83,6 +92,7 @@ class report(models.Model):
                 amount_to_words = currency.name+' '+number2words
 
         return amount_to_words
+    
 
     
 class SaleOrderLine(models.Model):
