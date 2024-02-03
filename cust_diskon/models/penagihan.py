@@ -15,6 +15,7 @@ class Custdiskon(models.Model):
                                         ('move_type', '=', 'out_invoice'),
                                         ('move_type', '=', 'out_invoice'),
                                         ('state','=','posted')]))
+    
     periode = fields.Char(string='Periode')
     
 

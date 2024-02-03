@@ -121,7 +121,7 @@
 <br/>
      <div style="line-height: 0.1em; border: 1px solid grey; "></div>
             
-            <span style="border: 0px solid; font-family:Calibri; font-size:16px; text-align: center; color:black;; width:100%;" >Terbilang : <span t-esc="x.number_to_words(x.total_overdue,x.currency_id)"/></span>
+            <span style="border: 0px solid; font-family:Calibri; font-size:16px; text-align: center; color:black;; width:100%;" >Terbilang : <span t-esc="x.number_to_words(sum(record.amount_total_signed for record in x.invoice_list.filtered(lambda r: r.to_check == True)),x.currency_id)"/></span>
 <br/>
 <br/>
             <b style="color:black; font-size:18px;"> Keterangan : </b>
