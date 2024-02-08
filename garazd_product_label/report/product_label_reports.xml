@@ -22,7 +22,7 @@
         <field name="name">Label 50x38 mm</field>
         <field name="format">custom</field>
         <field name="page_height">38</field>
-        <field name="page_width">50</field>
+        <field name="page_width">53</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">1</field>
         <field name="margin_bottom">0</field>
