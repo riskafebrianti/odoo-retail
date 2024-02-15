@@ -27,12 +27,12 @@
                         
                     </div>
              <div class="float-left">
-               <div class="details">
-               
-                
+               <div class="details">           
                        <b>
-                           <span style="color:black; font-size:29px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span>
+                           <span style="color:black; font-size:29px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span><br/>
                        </b>
+                           <span style="font-size:16px;">   General spareparts  &amp; component supplier </span>
+
                          <br></br>
                        <t t-if="o.company_id.street">
                            <span  t-esc="o.company_id.street"/>
