@@ -29,9 +29,9 @@
              <div class="float-left">
                <div class="details">           
                        <b>
-                           <span style="color:black; font-size:30px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span><br/>
+                           <span style="color:black; font-size:31px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span><br/>
                         </b>
-                           <div class="sub" style="font-size:19px;  margin-top:-8px; margin-left:22px; letter-spacing:1px; border:0px solid black;"><b>General spareparts  &amp; component supplier </b></div>
+                           <div class="sub" style="font-size:22px;  margin-left:2px; margin-top:-8px; letter-spacing:1px; border:0px solid black;"><b>General spareparts  &amp; component supplier </b></div>
                        
 
                          
