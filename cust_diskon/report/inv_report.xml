@@ -170,7 +170,7 @@
                                                 <span class="text-nowrap" t-field="line.quantity"/>
                                             </td>
                                              <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                                <span class="text-nowrap" t-field="line.product_id.uom_id"/>
+                                                <span class="text-nowrap" t-field="line.product_uom_id"/>
                                             </td>
                                              <td t-attf-class="text-start {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                 <span t-field="line.price_unit"/>
