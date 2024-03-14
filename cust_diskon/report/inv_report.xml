@@ -11,7 +11,7 @@
                 <t t-set="forced_vat" t-value="o.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
                 
                 <span style="font-size:25px; color:black; font-weight: bold; float:right;">INVOICE</span>
-                 <br/>  <br/>  <br/>
+
                 <span>Kepada</span>
                 <span>:</span> <br></br>
                 <span style="color:black;" t-field="o.partner_id.name"/>
@@ -29,7 +29,11 @@
                 <tr>
                      <td><strong>No. Surat Jalan</strong></td>
                      <span>:</span>
-                     <td><span t-field="o.line_ids[0].sale_line_ids.order_id.picking_ids[-1].name"/></td>
+                     <!-- <td><span t-esc="o.line_ids[0].sale_line_ids.order_id.picking_ids[-1].name"/> -->
+                    <td><span t-esc="o.line_ids[0].sale_line_ids.order_id.picking_ids.filtered(lambda x: x.picking_type_id.id != 6)[-1].name"/>
+                    <!-- <t t-set="lines" t-value="o.move_ids.filtered(lambda x: x.product_uom_qty)"/> -->
+                     <!-- <td><span t-esc="filter(lambda record: o.line_ids[0].sale_line_ids.order_id.picking_type_id == 2, o.line_ids[0].sale_line_ids.order_id.picking_ids[-1].name)"/> -->
+                     </td>
                 </tr><br></br>
                 <tr>
                      <td><strong>No. PO</strong></td>
@@ -87,7 +91,7 @@
 
                     </tr> -->
             
-                   <br/>
+                   
                 </div>
 
                 
@@ -200,8 +204,9 @@
                                                 <span t-field="line.name" t-options="{'widget': 'text'}"/>
                                             </td>
                                         </t>
+                        
                                     </tr>
-
+                   
                                     <t t-if="current_section and (line_last or lines[line_index+1].display_type == 'line_section')">
                                         <tr class="is-subtotal text-end">
                                             <td colspan="99">
@@ -217,7 +222,9 @@
                                 </t>
                             </tbody>
                         </table>
-
+                     <div t-if="not is_html_empty(o.narration)" name="comment">
+                        <span t-field="o.narration"/>
+                    </div>
                     <div class="clearfix mb-4">
                         <div id="total" class="row">
                             <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
@@ -321,9 +328,7 @@
                             </div>
                         </div>
                     </t>
-                    <div t-if="not is_html_empty(o.narration)" name="comment">
-                        <span t-field="o.narration"/>
-                    </div>
+                   
                     <p t-if="not is_html_empty(o.fiscal_position_id.note)" name="note">
                         <span t-field="o.fiscal_position_id.note"/>
                     </p>
