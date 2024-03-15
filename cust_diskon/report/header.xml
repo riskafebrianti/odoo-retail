@@ -22,29 +22,29 @@
                             <tr>
                                 <td>No.</td>
                                 <td></td>
-                                <td><span t-field="o.name"/></td>
+                                <td><span t-field="docs.name"/></td>
                             </tr>      
                         
                     </div>
              <div class="float-left">
                <div class="details">           
                        <b>
-                           <span style="color:black; font-size:31px;">  PT. <t t-if="company" t-esc="o.company_id.name"/></span><br/>
+                           <span style="color:black; font-size:31px;">  PT. <t t-if="company" t-esc="docs.company_id.name"/></span><br/>
                         </b>
                            <div class="sub" style="font-size:22px;  margin-left:2px; margin-top:-8px; letter-spacing:1px; border:0px solid black;"><b>General spareparts  &amp; component supplier </b></div>
                        
 
                          
                          <br></br>
-                       <t t-if="o.company_id.street">
-                           <span  t-esc="o.company_id.street"/>
+                       <t t-if="docs.company_id.street">
+                           <span  t-esc="docs.company_id.street"/>
                            <br></br></t>
-                       <t t-if="o.company_id">
-                           <span t-esc="o.company_id.city"/> 
+                       <t t-if="docs.company_id">
+                           <span t-esc="docs.company_id.city"/> 
                            <br></br>
                        </t>
-                       <t t-if="o.company_id">
-                          Whatsapp. <span t-esc="o.company_id.mobile"/> / Telp. <span t-esc="o.company_id.phone"/> 
+                       <t t-if="docs.company_id">
+                          Whatsapp. <span t-esc="docs.company_id.mobile"/> / Telp. <span t-esc="docs.company_id.phone"/> 
                            <br></br>
                        </t>
                     
