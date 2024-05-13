@@ -9,13 +9,7 @@
        <div class="float-right">
             <h3 class="mt0 text-right" t-field="company.report_header"/>
        </div>
-        <!-- <div class="header_content float-right">
-            <div class="logo" style="">
-          <img t-if="company.logo" style="max-width:260px;max-height:89px;"
-                      t-att-src="image_data_uri(company.logo)"
-                      class="float-left" alt="Logo"/>
-           </div>
-          </div> -->
+
            <div style="width:28%; border:0px solid black; display: block;font-size:19px; float:right;">
                         
                                 <br/>  <br/> <br/> <br/>  
@@ -29,7 +23,7 @@
              <div class="float-left">
                <div class="details">           
                        <b>
-                           <span style="color:black; font-size:31px;">  PT. <t t-if="company" t-esc="docs.company_id.name"/></span><br/>
+                           <span style="color:black; font-size:31px;"><t t-if="company" t-esc="docs.company_id.name"/></span><br/>
                         </b>
                            <div class="sub" style="font-size:22px;  margin-left:2px; margin-top:-8px; letter-spacing:1px; border:0px solid black;"><b>General spareparts  &amp; component supplier </b></div>
                        

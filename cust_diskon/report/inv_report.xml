@@ -29,10 +29,7 @@
                 <tr>
                      <td><strong>No. Surat Jalan</strong></td>
                      <span>:</span>
-                     <!-- <td><span t-esc="o.line_ids[0].sale_line_ids.order_id.picking_ids[-1].name"/> -->
                     <td><span t-esc="o.line_ids[0].sale_line_ids.order_id.picking_ids.filtered(lambda x: x.picking_type_id.id != 6)[-1].name"/>
-                    <!-- <t t-set="lines" t-value="o.move_ids.filtered(lambda x: x.product_uom_qty)"/> -->
-                     <!-- <td><span t-esc="filter(lambda record: o.line_ids[0].sale_line_ids.order_id.picking_type_id == 2, o.line_ids[0].sale_line_ids.order_id.picking_ids[-1].name)"/> -->
                      </td>
                 </tr><br></br>
                 <tr>

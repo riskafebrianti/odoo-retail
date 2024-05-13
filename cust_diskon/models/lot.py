@@ -10,10 +10,11 @@ from datetime import datetime
     
 #     # @api.depends('picking_id')
 #     def _compute_invoiced(self):
-#         # for move in self:
-#         #     if move.picking_id:
-#                 print(self)
-    
+#         if self.picking_ids:
+#             print(self)
+
+        
+
 class StockMove(models.Model):
     _inherit = "stock.move"
 

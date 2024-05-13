@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="inherit_view_product_template" model="ir.ui.view">
+    <record id="inherit_view_product_templateeee" model="ir.ui.view">
         <field name="name">stock.picking</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
                 
-         <field name="origin" position="after">
+         <field name="picking_type_id" position="after">
             <field name="invoiced"></field>
         </field>
  
      </field>   
+    </record>
+
+    <record model="ir.ui.view" id="account_move_kode_trans">
+        <field name="name">account.move</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="l10n_id_efaktur.account_move_efaktur_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='l10n_id_kode_transaksi']" position="after">
+                <!-- <attribute name="attrs">['|', ('country_code', '!=', 'ID'), ('l10n_id_need_kode_transaksi', '=', True)]</attribute> -->
+                <field name="tess"></field>
+            </xpath>
+        </field>
     </record>
 
 </odoo>

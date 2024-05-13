@@ -61,6 +61,9 @@ class report(models.Model):
     tracking=True,
     help="testitng",
 )
+    
+    tess = fields.Char('tess')
+    
 
 
     def number_to_words(self, amount, currency):
