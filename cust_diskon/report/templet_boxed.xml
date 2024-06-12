@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="custom_purchase_header_footer" inherit_id="web.external_layout_boxed">
+
+<xpath expr="//div[hasclass('text-center')]" position="replace">
+            <div class="text-center">
+                <table style="border: 1px solid; width:100%;">
+                    
+                    <tr>
+                    <td colspan="5" style="height:115px; color:black;">   
+                        <span style="float:left; margin-left:20px;">Administrasi,</span>    
+                        <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+                    </td>
+                    <td colspan="5" style="height:115px; color:black;">   
+                        <span style="float:left;margin-left:20px;">Penerima,</span>    
+                        <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+                    </td>
+
+                    <td colspan="2"  style="height:115px; color:black;">   
+                        <span style="float:left;margin-left:20px;">Mengetahui,</span>    
+                        <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+                    </td>
+
+
+                    </tr>
+                </table>
+            </div>
+
+</xpath>
+ </template>
+
+
+</odoo>
