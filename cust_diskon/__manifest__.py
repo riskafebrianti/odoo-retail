@@ -34,6 +34,7 @@
         'views/tagihan.xml',
         'report/templet_boxed.xml',
         'report/sd.xml',
+        'report/invTHC.xml',
         # 'report/suratjalan.xml',
         # 'report/sale_report.xml',
         # 'report/inv_report.xml',
