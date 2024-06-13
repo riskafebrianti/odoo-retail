@@ -4,7 +4,7 @@
 
 <xpath expr="//div[hasclass('text-center')]" position="replace">
                     <!-- <div class="gambarttd" style="border:1px solid;  "> -->
-                        <img src="/cust_diskon/static/src/img/my_image.PNG" style="height:110px; float:right; display:flex; margin-bottom:-155px;"/>
+                        <img src="/cust_diskon/static/src/img/my_image.PNG" style="border:1px solid; height:110px; float:right; display:flex; margin-bottom:-155px;"/>
                     <!-- </div> -->
             <div class="text-center">
                 <table style="border: 1px solid; width:100%;">
