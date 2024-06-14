@@ -10,16 +10,16 @@
                 <table style=" width:100%;">
                     
                     <tr style="">
-                    <td colspan="5" style="height:143px;  ">   
+                    <td colspan="5" style="height:135px;  ">   
                         <span style="float:left; margin-left:20px;">Penerima,</span>    
                         <!-- <div style="line-height: 1.1em; border: 1px solid black;"></div> -->
                     </td>
-                    <td colspan="5" style="height:143px; ">   
+                    <td colspan="5" style="height:135px; ">   
                         <span style="float:left;margin-left:20px;">Dikirim,</span>    
                         <!-- <div style="line-height: 1.1em; border: 1px solid black;"></div> -->
                     </td>
                 
-                    <td colspan="2" style="height:143px; ">   
+                    <td colspan="2" style="height:135px; ">   
                         <span style="float:left;margin-left:20px;">Disetujui,</span>   
                         <!-- <div style="line-height: 1.1em; border: 1px solid black;"></div> -->
                     </td>
