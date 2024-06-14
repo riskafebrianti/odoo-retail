@@ -38,7 +38,7 @@
         # 'report/suratjalan.xml',
         # 'report/sale_report.xml',
         # 'report/inv_report.xml',
-        # 'report/fu.xml',
+        'report/fu.xml',
         # 'report/purchase_po_report.xml',
         # 'report/stock_picking_report.xml',
         # 'report/stock_dileveryS_report.xml',    
