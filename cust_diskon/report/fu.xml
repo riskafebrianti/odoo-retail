@@ -141,31 +141,55 @@
     </div>
 </t>
 
+        <img t-att-src="'/cust_diskon/static/src/img/my_image.png'" style="height:110px; float:right; display:flex; margin-bottom:-155px;"/>
+                    <!-- </div> -->
+            <div class="text-center">
+                <table style=" width:100%;">
+                    
+                    <tr style="">
+                    <td colspan="5" style="height:135px;  ">   
+                        <span style="float:left; margin-left:20px;">Penerima,</span>    
+                        <!-- <div style="line-height: 1.1em; border: 1px solid black;"></div> -->
+                    </td>
+                    <td colspan="5" style="height:135px; ">   
+                        <span style="float:left;margin-left:20px;">Dikirim,</span>    
+                        <!-- <div style="line-height: 1.1em; border: 1px solid black;"></div> -->
+                    </td>
+                
+                    <td colspan="2" style="height:135px; ">   
+                        <span style="float:left;margin-left:20px;">Disetujui,</span>   
+                        <!-- <div style="line-height: 1.1em; border: 1px solid black;"></div> -->
+                    </td>
+                    
 
 
+                    </tr>
+                </table>
+            </div>
 
-<div class="footer">
+<!-- footer gap  -->
+<!-- <div class="footer">
     <table style="border: 1px solid; border-collapse: collapse; width:100%; margin-top:100px;">
     
         <tr>
             <td style="border: 1px solid;height:80px; color:black;">   
             <span style="float:left;margin-left:15px; margin-bottom:60px;">Administrasi,</span>    
-            <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+            
         </td>
         <td style="border: 1px solid; height:80px; color:black;">   
             <span style="float:left;margin-left:15px; margin-bottom:60px;">Penerima,</span>    
-            <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+            
         </td>
 
         <td style="border: 1px solid; height:80px; color:black;">   
             <span style="float:left;margin-left:15px; margin-bottom:60px;">Mengetahui,</span>    
-            <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
+            
         </td>
 
 
         </tr>
     </table>
-</div>
+</div> -->
 
 
      <!-- <h6 style="color:black; font-size:16px; text-align: right;">Tanggal Dicetak : <b><t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d, %B %Y')"/>
