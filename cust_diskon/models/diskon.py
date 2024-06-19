@@ -104,6 +104,8 @@ class SaleOrderLine(models.Model):
     # barcode = fields.Char('barcode',related='product_template_id.barcode')
     barcode = fields.Char('barcode', related='product_template_id.barcode')
     kode_hrg = fields.Char('Kode Harga', related='product_template_id.kode_hrg')
+    add_diskon = fields.Monetary(string='Additional Discount', store=True)
+    # add_diskon = fields.Monetary(string='Additional Discount', store=True)
 
 
     @api.onchange ("product_template_id")
@@ -112,6 +114,13 @@ class SaleOrderLine(models.Model):
         #  self.barcode  = self.product_template_id.barcode
             self.discount = self.order_id.partner_id.diskon
     
+    @api.onchange('add_diskon')
+    def _onchange_add_diskon(self):
+        if self.add_diskon:
+            self.discount = (self.add_diskon / self.price_unit) * 100
+            print()
+    
+
     @api.model
     def create(self, values):
         # Check if the product already exists in the order
@@ -154,6 +163,8 @@ class SaleOrder(models.Model):
     diskon = fields.Integer('Diskon customer') 
     barcode = fields.Char(string='Barcode')
     kode_hrg = fields.Char('Kode Harga')
+    add_diskon_total = fields.Monetary(string='Additional Discount', store=True)
+    
 
 
     @api.onchange('barcode')
@@ -171,6 +182,27 @@ class SaleOrder(models.Model):
                 self.order_line = [(0, 0, order_line_data)]
             self.barcode = ''
 
+    # @api.depends('order_line.price_subtotal', 'order_line.price_tax', 'order_line.price_total')
+    # def _compute_amounts(self):
+    #     """Compute the total amounts of the SO."""
+    #     for order in self:
+    #         order_lines = order.order_line.filtered(lambda x: not x.display_type)
+
+    #         if order.company_id.tax_calculation_rounding_method == 'round_globally':
+    #             tax_results = self.env['account.tax']._compute_taxes([
+    #                 line._convert_to_tax_base_line_dict()
+    #                 for line in order_lines
+    #             ])
+    #             totals = tax_results['totals']
+    #             amount_untaxed = totals.get(order.currency_id, {}).get('amount_untaxed', 0.0)
+    #             amount_tax = totals.get(order.currency_id, {}).get('amount_tax', 0.0)
+    #         else:
+    #             amount_untaxed = sum(order_lines.mapped('price_subtotal'))
+    #             amount_tax = sum(order_lines.mapped('price_tax'))
+
+    #         order.amount_untaxed = amount_untaxed
+    #         order.amount_tax = amount_tax
+    #         order.amount_total = order.amount_untaxed + order.amount_tax
     
     @api.onchange("partner_id")
     def _onchange_partner_id(self):

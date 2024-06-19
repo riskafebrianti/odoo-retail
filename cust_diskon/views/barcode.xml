@@ -9,8 +9,20 @@
             <field name="product_template_id" position="after">
                 <field name="barcode"></field>
                 <field name="kode_hrg"></field>
+                <!-- <field name="add_diskon"></field> -->
             </field>
-          
+             <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="before">
+                <field name="add_diskon"></field>
+            </xpath> 
+            <!-- <xpath expr="//field[@name='amount_total']" position="before">
+                <field name="add_diskon_total"></field>
+            </xpath>  -->
+            <!-- <xpath expr="//field[@name='amount_total']" position="after">
+            <field name="add_diskon"/>
+        </xpath> -->
+            <!-- <field name="price_subtotal" position="before">
+                <field name="add_diskon"></field>
+            </field> -->
            
             <!-- <field name="barcode" position="after">
                 

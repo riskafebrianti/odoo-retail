@@ -8,7 +8,7 @@
             </th>
 
         </xpath>
-        <!-- <xpath expr="//t[@t-foreach='o.move_line_ids_without_package']" position="replace">
+        <xpath expr="//t[@t-foreach='o.move_line_ids_without_package']" position="replace">
         <t t-foreach="o.move_line_ids_without_package" t-as="ml">
             <tr>
                 <td>
@@ -50,7 +50,7 @@
                 </td>
             </tr>
         </t>
-        </xpath> -->
+        </xpath>
     </template>
 
 </odoo>

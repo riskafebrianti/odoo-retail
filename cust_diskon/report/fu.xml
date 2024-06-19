@@ -122,7 +122,7 @@
             <span style="border: 0px solid; font-family:Calibri; font-size:16px; text-align: center; color:black;; width:100%;" >Terbilang : <span t-esc="x.number_to_words(sum(record.amount_total_signed for record in x.invoice_list.filtered(lambda r: r.to_check == True)),x.currency_id)"/></span>
 <br/>
 <br/>
-            <!-- <b style="color:black; font-size:18px;"> Keterangan : </b>
+            <b style="color:black; font-size:18px;"> Keterangan : </b>
             
                 <p style="color:black; font-size:15px;"/>Pembayaran dapat ditransfer ke rekening dibawah ini atas nama PT Gemilang Auto Perkasa :
                     
@@ -134,7 +134,7 @@
                                 <span style="margin-left:5px;"> - 148-00225-32892</span>
                         </li>
                    
-            <br/> -->
+            <br/>
             
     </div>
 </t>
@@ -143,23 +143,21 @@
 
 
 <div class="footer">
-<img t-att-src="'/cust_diskon/static/src/img/my_image.png'" style="height:110px; float:right; display:flex; margin-bottom:-155px;"/>
     <table style="border: 1px solid; border-collapse: collapse; width:100%; margin-top:100px;">
     
         <tr>
-            <td style="border: 1px solid;height:110px; color:black;">   
+            <td style="border: 1px solid;height:80px; color:black;">   
             <span style="float:left;margin-left:15px; margin-bottom:60px;">Administrasi,</span>    
             <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
         </td>
-        <td style="border: 1px solid; height:110px; color:black;">   
+        <td style="border: 1px solid; height:80px; color:black;">   
             <span style="float:left;margin-left:15px; margin-bottom:60px;">Penerima,</span>    
             <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
         </td>
 
-        <td style="border: 1px solid; height:110px; color:black;">   
+        <td style="border: 1px solid; height:80px; color:black;">   
             <span style="float:left;margin-left:15px; margin-bottom:60px;">Mengetahui,</span>    
             <!-- <div style="line-height: 1.1em; border: 1px solid black; color:black;"></div> -->
-            
         </td>
 
 
