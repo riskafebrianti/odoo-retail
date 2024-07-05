@@ -105,8 +105,9 @@ class SaleOrderLine(models.Model):
     barcode = fields.Char('barcode', related='product_template_id.barcode')
     kode_hrg = fields.Char('Kode Harga', related='product_template_id.kode_hrg')
     add_diskon = fields.Monetary(string='Additional Discount', store=True)
-    # add_diskon = fields.Monetary(string='Additional Discount', store=True)
+    option = fields.Selection(related='order_id.option', string='Order State', store=True)
 
+  
 
     @api.onchange ("product_template_id")
     def _onchange_product_template_id(self):
@@ -118,7 +119,9 @@ class SaleOrderLine(models.Model):
     def _onchange_add_diskon(self):
         if self.add_diskon:
             self.discount = (self.add_diskon / self.price_unit) * 100
-            print()
+
+            
+           
     
 
     @api.model
@@ -163,8 +166,78 @@ class SaleOrder(models.Model):
     diskon = fields.Integer('Diskon customer') 
     barcode = fields.Char(string='Barcode')
     kode_hrg = fields.Char('Kode Harga')
-    add_diskon_total = fields.Monetary(string='Additional Discount', store=True)
+    add_diskon_total = fields.Monetary(string='Additional Discount', default = 0.0)
+    diskon_total = fields.Monetary(string='Total Discount',  compute='sumsum', store=True, readonly=True, default = 0.0)
+    option = fields.Selection(string='Select The Type of Discount ',  readonly=False, store=True,
+        selection=[('pcs', 'Discounts on Some Items'), ('global', 'Discount on All Items')]
+    )
     
+    
+    
+    @api.depends('order_line.add_diskon', 'add_diskon_total')
+    def sumsum(self):
+        for line in self:
+            # if line.order_line.add_diskon:
+                line.diskon_total = sum(tes.add_diskon for tes in line.order_line)
+                print()
+                
+
+    @api.onchange('add_diskon_total','order_line.add_diskon')
+    def _compute_field_sum(self):
+       
+            # self.order_id.add_diskon_total = sum(line.add_diskon for line in self)
+
+        if self.add_diskon_total:
+            for order in self:
+                sum = len(order.order_line)
+                bagi = order.add_diskon_total / sum
+                # order.add_diskon_total = sum(line.add_diskon for line in self.order_line)
+                
+                # order.order_line 
+                for line in order.order_line:
+                    line.add_diskon = bagi
+                    line.discount =(line.add_diskon / line.price_unit) * 100
+            
+        # elif self.add_diskon_total == 0:
+        #     self.add_diskon_total = sum(line.add_diskon for line in self.order_line)
+
+
+
+            print(bagi)
+    
+    
+    
+
+   
+    
+    
+    
+    
+    # @api.depends('order_line.price_subtotal', 'order_line.price_tax', 'order_line.price_total', 'order_line.add_diskon', 'add_diskon_total')
+    # def _compute_amounts(self):
+    #     """Compute the total amounts of the SO."""
+    #     for order in self:
+    #         order_lines = order.order_line.filtered(lambda x: not x.display_type)
+
+    #         if order.company_id.tax_calculation_rounding_method == 'round_globally':
+    #             tax_results = self.env['account.tax']._compute_taxes([
+    #                 line._convert_to_tax_base_line_dict()
+    #                 for line in order_lines
+    #             ])
+    #             totals = tax_results['totals']
+    #             amount_untaxed = totals.get(order.currency_id, {}).get('amount_untaxed', 0.0)
+    #             amount_tax = totals.get(order.currency_id, {}).get('amount_tax', 0.0)
+    #             # add_diskon_total = totals.get(order.currency_id, {}).get('add_diskon_total', 0.0)
+    #         else:
+    #             amount_untaxed = sum(order_lines.mapped('price_subtotal'))
+    #             amount_tax = sum(order_lines.mapped('price_tax'))
+    #             add_diskon_total = self.add_diskon_total
+    #             # add_diskon_total = totals.get(order.currency_id, {}).get('add_diskon_total', 0.0)
+
+    #         order.amount_untaxed = amount_untaxed
+    #         order.amount_tax = amount_tax
+    #         order.add_diskon_total = add_diskon_total
+    #         order.amount_total = order.amount_untaxed + order.amount_tax - order.add_diskon_total
 
 
     @api.onchange('barcode')
@@ -212,3 +285,6 @@ class SaleOrder(models.Model):
                 for line in self.order_line:
                     line.discount = self.diskon
 
+ 
+
+    
