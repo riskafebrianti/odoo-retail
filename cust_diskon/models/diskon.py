@@ -105,22 +105,22 @@ class SaleOrderLine(models.Model):
     barcode = fields.Char('barcode', related='product_template_id.barcode')
     kode_hrg = fields.Char('Kode Harga', related='product_template_id.kode_hrg')
     add_diskon = fields.Monetary(string='Additional Discount', store=True)
-    option = fields.Selection(related='order_id.option', string='Order State', store=True)
+    option = fields.Selection(related='order_id.option', string='Order State',  store=True)
 
-  
-
+   
     @api.onchange ("product_template_id")
     def _onchange_product_template_id(self):
         if self.product_template_id:
         #  self.barcode  = self.product_template_id.barcode
             self.discount = self.order_id.partner_id.diskon
     
-    @api.onchange('add_diskon')
+    @api.onchange('discount','add_diskon')
     def _onchange_add_diskon(self):
-        if self.add_diskon:
-            self.discount = (self.add_diskon / self.price_unit) * 100
+        if self.discount:
+            self.add_diskon = (self.discount * self.price_unit) / 100
 
-            
+        if self.add_diskon:
+                self.discount = (self.add_diskon / self.price_unit) * 100
            
     
 
@@ -168,11 +168,23 @@ class SaleOrder(models.Model):
     kode_hrg = fields.Char('Kode Harga')
     add_diskon_total = fields.Monetary(string='Additional Discount', default = 0.0)
     diskon_total = fields.Monetary(string='Total Discount',  compute='sumsum', store=True, readonly=True, default = 0.0)
-    option = fields.Selection(string='Select The Type of Discount ',  readonly=False, store=True,
+    option = fields.Selection(string='Select The Type of Discount ',  readonly=False, store=True, 
         selection=[('pcs', 'Discounts on Some Items'), ('global', 'Discount on All Items')]
     )
     
     
+    @api.onchange('option')
+    def onchangeOption(self):
+        if self.option == 'pcs':
+            self.add_diskon_total = False
+            self.order_line.add_diskon = False
+            self.order_line.discount = False
+
+        elif self.option == 'global':
+            self.order_line.add_diskon = False
+            self.order_line.discount = False
+
+       
     
     @api.depends('order_line.add_diskon', 'add_diskon_total')
     def sumsum(self):
@@ -182,7 +194,7 @@ class SaleOrder(models.Model):
                 print()
                 
 
-    @api.onchange('add_diskon_total','order_line.add_diskon')
+    @api.onchange('add_diskon_total','order_line.add_diskon', 'order_line.discount')
     def _compute_field_sum(self):
        
             # self.order_id.add_diskon_total = sum(line.add_diskon for line in self)
@@ -197,6 +209,14 @@ class SaleOrder(models.Model):
                 for line in order.order_line:
                     line.add_diskon = bagi
                     line.discount =(line.add_diskon / line.price_unit) * 100
+
+                    # if line.discount:
+                    #     line.add_diskon = (line.discount * line.price_unit) / 100
+
+
+        # if self.order_line.discount:
+        #     for diskon in self.order_line:
+        #         diskon.add_diskon = diskon.discount
             
         # elif self.add_diskon_total == 0:
         #     self.add_diskon_total = sum(line.add_diskon for line in self.order_line)

@@ -17,6 +17,11 @@
                 <!-- <field name="set_discount"></field> -->
 
             </xpath> 
+             <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="attributes">
+                <attribute name="attrs">{'readonly': ['|', ('option', '=', False), ('option', '=', 'global')]}</attribute>
+                <!-- <field name="set_discount"></field> -->
+
+            </xpath> 
             <!-- <xpath expr="//field[@name='amount_total']" position="before">
                 <field name="add_diskon_total"></field>
             </xpath>  -->
