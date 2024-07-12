@@ -205,7 +205,6 @@ class SaleOrder(models.Model):
                 bagi = order.add_diskon_total / sum
                 # order.add_diskon_total = sum(line.add_diskon for line in self.order_line)
                 
-                order.order_line 
                 for line in order.order_line:
                     line.add_diskon = bagi
                     line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
