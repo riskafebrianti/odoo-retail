@@ -12,13 +12,14 @@
                 <!-- <field name="add_diskon"></field> -->
             </field>
              <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="before">
-                <field name="add_diskon" attrs="{'readonly': ['|', ('option', '=', False), ('option', '=', 'global')]}"/>
+                <field name="add_diskon" force_save="1" attrs="{'readonly': ['|', ('option', '=', False), ('option', '=', 'global')]}"/>
                 <field name="option" invisible="1"/>
                 <!-- <field name="set_discount"></field> -->
 
             </xpath> 
              <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="attributes">
                 <attribute name="attrs">{'readonly': ['|', ('option', '=', False), ('option', '=', 'global')]}</attribute>
+                <attribute name="force_save">True</attribute>
                 <!-- <field name="set_discount"></field> -->
 
             </xpath> 

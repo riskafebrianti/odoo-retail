@@ -117,7 +117,7 @@ class SaleOrderLine(models.Model):
     @api.onchange('discount','add_diskon')
     def _onchange_add_diskon(self):
         if self.discount:
-            self.add_diskon = (self.discount * self.price_unit) / 100
+            self.add_diskon = (self.discount * (self.price_unit * self.product_uom_qty)) / 100
 
         if self.add_diskon:
                 self.discount = (self.add_diskon / self.price_unit) * 100
@@ -166,7 +166,7 @@ class SaleOrder(models.Model):
     diskon = fields.Integer('Diskon customer') 
     barcode = fields.Char(string='Barcode')
     kode_hrg = fields.Char('Kode Harga')
-    add_diskon_total = fields.Monetary(string='Additional Discount', default = 0.0)
+    add_diskon_total = fields.Monetary(string='Additional Discount', force_save="1")
     diskon_total = fields.Monetary(string='Total Discount',  compute='sumsum', store=True, readonly=True, default = 0.0)
     option = fields.Selection(string='Select The Type of Discount ',  readonly=False, store=True, 
         selection=[('pcs', 'Discounts on Some Items'), ('global', 'Discount on All Items')]
@@ -205,23 +205,11 @@ class SaleOrder(models.Model):
                 bagi = order.add_diskon_total / sum
                 # order.add_diskon_total = sum(line.add_diskon for line in self.order_line)
                 
-                # order.order_line 
+                order.order_line 
                 for line in order.order_line:
                     line.add_diskon = bagi
-                    line.discount =(line.add_diskon / line.price_unit) * 100
-
-                    # if line.discount:
-                    #     line.add_diskon = (line.discount * line.price_unit) / 100
-
-
-        # if self.order_line.discount:
-        #     for diskon in self.order_line:
-        #         diskon.add_diskon = diskon.discount
-            
-        # elif self.add_diskon_total == 0:
-        #     self.add_diskon_total = sum(line.add_diskon for line in self.order_line)
-
-
+                    line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
+       
 
             print(bagi)
     
