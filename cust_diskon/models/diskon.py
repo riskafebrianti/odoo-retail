@@ -196,21 +196,65 @@ class SaleOrder(models.Model):
 
     @api.onchange('add_diskon_total','order_line.add_diskon', 'order_line.discount')
     def _compute_field_sum(self):
+
+        if self.add_diskon_total:
+
+            listt = [lines.price_subtotal for lines in self.order_line]
+            sum = len(self.order_line)
+            bagi = self.add_diskon_total / sum
+            tes = [lines for lines in self.order_line if lines.price_subtotal >= bagi]
+            
+            for line in tes:
+                # listt.append(line.price_subtotal)
+                
+                # if listt < bagi
+                summ = len([i for i in listt if i >= bagi])
+                bagikan = line.order_id.add_diskon_total / summ
+
+                # tes = [lines for lines in line if lines.price_subtotal >= bagi]
+              
+                line.add_diskon = bagikan
+                line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
+                # for a in listt :
+                #     if a >= bagi:
+
+                    
+
+            # line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
+
        
             # self.order_id.add_diskon_total = sum(line.add_diskon for line in self)
 
-        if self.add_diskon_total:
-            for order in self:
-                sum = len(order.order_line)
-                bagi = order.add_diskon_total / sum
-                # order.add_diskon_total = sum(line.add_diskon for line in self.order_line)
-                
-                for line in order.order_line:
-                    line.add_diskon = bagi
-                    line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
-       
+        # # if self.add_diskon_total:
+        # #     listt =[]
+        # #     for order in self:
 
-            print(bagi)
+        # #         sum = len(order.order_line)
+        # #         bagi = order.add_diskon_total / sum
+                
+        # #         # order.add_diskon_total = sum(line.add_diskon for line in self.order_line)
+                
+        # #         for line in self.order.order_line:
+        # #             listt.append(line.price_subtotal)
+                  
+                    
+
+        # #             summ = len([i for i in listt if i >= bagi])
+        # #             bagii = line.order_id.add_diskon_total / summ
+                    
+            
+
+        # #             print(summ)
+          
+        #             if bagii :
+                        
+        #                 line.add_diskon = bagii
+        #                 line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
+        #             else :
+        #                 line.add_diskon = 0
+    
+
+        #     print(bagi)
     
     
     
