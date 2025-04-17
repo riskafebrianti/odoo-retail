@@ -64,26 +64,27 @@ class report(models.Model):
 )
     
     tess = fields.Char('tess')
-    # payment_invc_date = fields.Date(string='Tanggal Pembayaran Terakhir')
-    # payment_invc = fields.Many2many(
-    #     comodel_name='account.payment', 
-    #     relation='ref_matang_rel',
-    #     string='Referensi Pembayaran',
-    #     store=True,
-    #     compute='payment_inv',
-    #     )
+
+    payment_invc_date = fields.Date(string='Tanggal Pembayaran Terakhir')
+    payment_invc = fields.Many2many(
+        comodel_name='account.payment', 
+        relation='ref_matang_rel',
+        string='Referensi Pembayaran',
+        store=True,
+        compute='payment_inv',
+        )
     
 
-    # @api.depends('payment_state')
-    # def payment_inv(self):
-    #      for rec in self:
-    #         if rec.payment_state =='paid':
-    #             data_payment = self.env['account.payment'].sudo().search([('ref','=',rec.name)])
-    #             rec.payment_invc = data_payment
-    #             if len(data_payment) > 1:
-    #                 rec.payment_invc_date = data_payment[-1].create_date
-    #             else:
-    #                 rec.payment_invc_date = data_payment.create_date
+    @api.depends('payment_state')
+    def payment_inv(self):
+         for rec in self:
+            if rec.payment_state =='paid':
+                data_payment = self.env['account.payment'].sudo().search([('ref','=',rec.name)])
+                rec.payment_invc = data_payment
+                if len(data_payment) > 1:
+                    rec.payment_invc_date = data_payment[-1].create_date
+                else:
+                    rec.payment_invc_date = data_payment.create_date
             
     #    for record in self:
     #         data_payment = self.env['account.payment'].sudo().search([('ref','=',self.name)])
@@ -98,9 +99,9 @@ class report(models.Model):
              
     #    pr?nt("data")
     
-    def action_refresh_payment_ref(self):
-    # for record in self:
-        self.payment_inv()
+    # def action_refresh_payment_ref(self):
+    # # for record in self:
+    #     self.payment_inv()
         # self.price_total = self.quantity * self.price
     
 
