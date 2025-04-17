@@ -32,7 +32,7 @@
         'views/asset.xml',
         'views/barcode.xml',
         'views/tagihan.xml',
-        # 'report/templet_boxed.xml',
+        'report/header.xml',
         # 'report/sd.xml',
         # 'report/invTHC.xml',
         'report/suratjalan.xml',
