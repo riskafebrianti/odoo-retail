@@ -65,7 +65,7 @@
                 <field name="payment_invc" widget="many2many_tags"/>
                 <field name="payment_invc_date"/>
             </xpath>
-            <xpath expr="//field[@name='to_check']" position="after">
+            <xpath expr="//field[@name='auto_post']" position="after">
                 <button name="action_refresh_payment_ref" type="object"
                 string="Refresh"/>
             </xpath>
