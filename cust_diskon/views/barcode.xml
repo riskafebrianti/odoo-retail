@@ -9,10 +9,10 @@
             <field name="product_template_id" position="after">
                 <field name="barcode"></field>
                 <field name="kode_hrg"></field>
-                <!-- <field name="add_diskon"></field> -->
+                <field name="add_diskon"></field>
             </field>
              <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="before">
-                <!-- <field name="add_diskon" force_save="1" attrs="{'readonly': ['|', ('option', '=', False), ('option', '=', 'global')]}"/> -->
+                <field name="add_diskon" force_save="1" attrs="{'readonly': ['|', ('option', '=', False), ('option', '=', 'global')]}"/>
                 <field name="option" invisible="1"/>
                 <!-- <field name="set_discount"></field> -->
 
