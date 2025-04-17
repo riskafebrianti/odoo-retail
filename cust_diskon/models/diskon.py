@@ -99,9 +99,9 @@ class report(models.Model):
              
     #    pr?nt("data")
     
-    # def action_refresh_payment_ref(self):
-    # # for record in self:
-    #     self.payment_inv()
+    def action_refresh_payment_ref(self):
+    # for record in self:
+        self.payment_inv()
         # self.price_total = self.quantity * self.price
     
 
