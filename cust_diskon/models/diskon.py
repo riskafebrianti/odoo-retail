@@ -74,7 +74,7 @@ class report(models.Model):
         )
     
 
-    @api.depends('state')
+    @api.depends('payment_state')
     def payment_inv(self):
          for rec in self:
             if rec.payment_state =='paid':
