@@ -59,16 +59,15 @@
         </field>
     </record>
 
-        <record id="inherit_view_order_form" model="ir.ui.view">
+        <!-- <record id="inherit_view_order_form" model="ir.ui.view">
         <field name="name">sale.order.view.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <!-- Add your xpath here -->
+            
            
             <xpath expr="//group[@name='sale_total']//field[@name='tax_totals']" position="before">
-                 <!-- <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">-->
-                 <!-- <button name="set_is_active_true" string="Set Active True" type="object" class="oe_highlight"/>               -->
+                 
                 <field class="oe_subtotal_footer oe_right" colspan="2" name="option"/>
                 <field class="oe_subtotal_footer oe_right" colspan="2" name="add_diskon_total" attrs="{'invisible': ['|', ('option', '=', False), ('option', '=', 'pcs')]}" />
                 <field class="oe_subtotal_footer oe_right" colspan="2" name="diskon_total"/>
@@ -77,5 +76,5 @@
             
 
         </field>
-    </record>
+    </record> -->
 </odoo>
