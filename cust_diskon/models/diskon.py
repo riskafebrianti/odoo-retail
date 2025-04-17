@@ -85,7 +85,10 @@ class report(models.Model):
             if rec.payment_state =='paid':
                 data_payment = self.env['account.payment'].sudo().search([('ref','=',rec.name)])
                 rec.payment_invc = data_payment
-                rec.payment_invc_date = data_payment[-1].create_date
+                if len(data_payment) > 1:
+                    rec.payment_invc_date = data_payment[-1].create_date
+                else:
+                    rec.payment_invc_date = data_payment.create_date
             
     #    for record in self:
     #         data_payment = self.env['account.payment'].sudo().search([('ref','=',self.name)])
