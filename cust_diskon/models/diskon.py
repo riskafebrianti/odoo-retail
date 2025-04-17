@@ -71,7 +71,7 @@ class report(models.Model):
         relation='ref_matang_rel',
         string='Referensi Pembayaran',
         store=True,
-        compute='payment_inv',
+        # compute='payment_inv',
         )
     
 
