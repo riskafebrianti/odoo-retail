@@ -54,11 +54,6 @@ class cust_diskon2(models.Model):
 class report(models.Model):
     _inherit = 'account.move'
 
-    # hide_post_button = fields.Boolean(compute='_compute_hide_post_button', readonly=True)
-    # payment_invc = fields.Many2one('account.payment', string='Payment Invoice',store=True,)
-    # payment_invc = fields.One2many('account.payment', 'move_id', string='Payment Invoice',store=True,)
-    # payment_invc = fields.Many2many(comodel_name='account.payment', string='Payment Invoice',store=True,)
-    
     
 
     to_check = fields.Boolean(
@@ -73,7 +68,7 @@ class report(models.Model):
     payment_invc = fields.Many2many(
         comodel_name='account.payment', 
         relation='ref_matang_rel',
-        string='Payment Reference',
+        string='Referensi Pembayaran',
         store=True,
         compute='payment_inv',
         )
