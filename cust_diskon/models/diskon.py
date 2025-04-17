@@ -55,6 +55,12 @@ class report(models.Model):
     _inherit = 'account.move'
 
     # hide_post_button = fields.Boolean(compute='_compute_hide_post_button', readonly=True)
+    # payment_invc = fields.Many2one('account.payment', string='Payment Invoice',store=True,)
+    # payment_invc = fields.One2many('account.payment', 'move_id', string='Payment Invoice',store=True,)
+    # payment_invc = fields.Many2many(comodel_name='account.payment', string='Payment Invoice',store=True,)
+    
+    
+
     to_check = fields.Boolean(
     string='To Check',
     default=True,
@@ -63,8 +69,42 @@ class report(models.Model):
 )
     
     tess = fields.Char('tess')
+    payment_invc_date = fields.Date(string='Tanggal Pembayaran Terakhir')
+    payment_invc = fields.Many2many(
+        comodel_name='account.payment', 
+        relation='ref_matang_rel',
+        string='Payment Reference',
+        store=True,
+        compute='payment_inv',
+        )
     
 
+    @api.depends('state')
+    def payment_inv(self):
+         for rec in self:
+            if rec.payment_state =='paid':
+                data_payment = self.env['account.payment'].sudo().search([('ref','=',rec.name)])
+                rec.payment_invc = data_payment
+                rec.payment_invc_date = data_payment[-1].create_date
+            
+    #    for record in self:
+    #         data_payment = self.env['account.payment'].sudo().search([('ref','=',self.name)])
+    #         record.update({
+    #             'payment_invc': 1,
+                
+    #         })
+
+    
+       
+            # return self.payment_invc = data_payment.name
+             
+    #    pr?nt("data")
+    
+    def action_refresh_payment_ref(self):
+    # for record in self:
+        self.payment_inv()
+        # self.price_total = self.quantity * self.price
+    
 
     def number_to_words(self, amount, currency):
 

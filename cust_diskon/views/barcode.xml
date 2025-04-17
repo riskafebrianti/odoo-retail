@@ -55,6 +55,23 @@
         </field>
     </record> -->
 
+    
+    <record model="ir.ui.view" id="account_move_form_inherits">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="payment_invc" widget="many2many_tags"/>
+                <field name="payment_invc_date"/>
+            </xpath>
+            <xpath expr="//field[@name='to_check']" position="after">
+                <button name="action_refresh_payment_ref" type="object"
+                string="Refresh"/>
+            </xpath>
+        </field>
+    </record>
+       
     <record id="inherit_view_product_template" model="ir.ui.view">
         <field name="name">product.template</field>
         <field name="model">product.template</field>
