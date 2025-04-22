@@ -141,13 +141,13 @@ class SaleOrderLine(models.Model):
         #  self.barcode  = self.product_template_id.barcode
             self.discount = self.order_id.partner_id.diskon
     
-    @api.onchange('discount','add_diskon')
-    def _onchange_add_diskon(self):
-        if self.discount:
-            self.add_diskon = (self.discount * (self.price_unit * self.product_uom_qty)) / 100
+    # @api.onchange('discount','add_diskon')
+    # def _onchange_add_diskon(self):
+    #     if self.discount:
+    #         self.add_diskon = (self.discount * (self.price_unit * self.product_uom_qty)) / 100
 
-        if self.add_diskon:
-                self.discount = (self.add_diskon / self.price_unit) * 100
+    #     if self.add_diskon:
+    #             self.discount = (self.add_diskon / self.price_unit) * 100
            
     
 
@@ -200,16 +200,16 @@ class SaleOrder(models.Model):
     )
     
     
-    @api.onchange('option')
-    def onchangeOption(self):
-        if self.option == 'pcs':
-            self.add_diskon_total = False
-            self.order_line.add_diskon = False
-            self.order_line.discount = False
+    # @api.onchange('option')
+    # def onchangeOption(self):
+    #     if self.option == 'pcs':
+    #         self.add_diskon_total = False
+    #         self.order_line.add_diskon = False
+    #         self.order_line.discount = False
 
-        elif self.option == 'global':
-            self.order_line.add_diskon = False
-            self.order_line.discount = False
+    #     elif self.option == 'global':
+    #         self.order_line.add_diskon = False
+    #         self.order_line.discount = False
 
        
     
