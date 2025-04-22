@@ -85,19 +85,7 @@ class report(models.Model):
                     rec.payment_invc_date = data_payment[-1].create_date
                 else:
                     rec.payment_invc_date = data_payment.create_date
-            
-    #    for record in self:
-    #         data_payment = self.env['account.payment'].sudo().search([('ref','=',self.name)])
-    #         record.update({
-    #             'payment_invc': 1,
-                
-    #         })
-
-    
-       
-            # return self.payment_invc = data_payment.name
-             
-    #    pr?nt("data")
+   
     
     def action_refresh_payment_ref(self):
     # for record in self:
@@ -233,29 +221,29 @@ class SaleOrder(models.Model):
                 print()
                 
 
-    @api.onchange('add_diskon_total','order_line.add_diskon', 'order_line.discount')
-    def _compute_field_sum(self):
+    # @api.onchange('add_diskon_total','order_line.add_diskon', 'order_line.discount')
+    # def _compute_field_sum(self):
 
-        if self.add_diskon_total:
+    #     if self.add_diskon_total:
 
-            listt = [lines.price_subtotal for lines in self.order_line]
-            sum = len(self.order_line)
-            bagi = self.add_diskon_total / sum
-            tes = [lines for lines in self.order_line if lines.price_subtotal >= bagi]
+    #         listt = [lines.price_subtotal for lines in self.order_line]
+    #         sum = len(self.order_line)
+    #         bagi = self.add_diskon_total / sum
+    #         tes = [lines for lines in self.order_line if lines.price_subtotal >= bagi]
             
-            for line in tes:
-                # listt.append(line.price_subtotal)
+    #         for line in tes:
+    #             # listt.append(line.price_subtotal)
                 
-                # if listt < bagi
-                summ = len([i for i in listt if i >= bagi])
-                bagikan = line.order_id.add_diskon_total / summ
+    #             # if listt < bagi
+    #             summ = len([i for i in listt if i >= bagi])
+    #             bagikan = line.order_id.add_diskon_total / summ
 
-                # tes = [lines for lines in line if lines.price_subtotal >= bagi]
+    #             # tes = [lines for lines in line if lines.price_subtotal >= bagi]
               
-                line.add_diskon = bagikan
-                line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
-                # for a in listt :
-                #     if a >= bagi:
+    #             line.add_diskon = bagikan
+    #             line.discount = (line.add_diskon / (line.price_unit * line.product_uom_qty)) * 100
+    #             # for a in listt :
+    #             #     if a >= bagi:
 
                     
 
